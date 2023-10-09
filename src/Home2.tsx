@@ -25,6 +25,7 @@ const Home2:React.FC = () => {
         setBookChangeColor("opendiary front back");
         setContentSizeChange("opendiaryContent-wrap");
         setTextContentSizeChange("changeHomeText-wrap");
+        
     }
 
     return(

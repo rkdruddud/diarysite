@@ -12,49 +12,48 @@ div{
     width: 100vw;
     height: 100vh;
     object-fit: cover;
-    background-color: black;
+    background-color: blue;
 
 }
 
 .HomeText-wrap{
     position: relative;
-    width: 61.8%;
+    width: 61.8vw;
     height: 100vh;
     background-color: blue;
 }
 
 .changeHomeText-wrap{
     position: relative;
-    width: 38.2%;
+    width: 38.2vw;
     height: 100vh;
     background-color: blue;
-    transition: 1.2s ease-in-out;
+    transition: 1.2s;
 }
 
 .diaryContent-wrap{
     position: relative;
-    width: 38.2%;
+    width: 38.2vw;
     height: 100vh;
     background-color: yellow;
 }
 
 .opendiaryContent-wrap{
     position: relative;
-    width: 61.8%;
+    width: 61.8vw;
     height: 100vh;
     background-color: yellow;
-    transition: 1.2s ease-in-out;
+ 
 }
 
 .diary-wrap{
-    
    position: absolute;
     width: 240px;
     height: 350px;
-    left: 50%;
+    right: 12vw;
     bottom: 50%;
     transform-style: preserve-3d;
-   transform: translate(-50%,50%);
+   transform: translate(0,50%);
     box-shadow: 20px 0px 20px #383838;
     transition: .5s ease-in-out;
 }
@@ -106,7 +105,9 @@ div{
     backface-visibility: visible;
     -webkit-backface-visibility: visible;
     background-color: #fff;
+    width: 10%;
     opacity: 0;
+    
 }
 
 .diary-wrap .diary.bottom{
@@ -125,15 +126,15 @@ div{
 }
 
 .opendiary-wrap{
-    width: 260px;
-    height: 370px;
+    position: absolute;
+    width: 280px;
+    height: 390px;
     bottom: 50%;
+    right: 12vw;
     transform-style: preserve-3d;
-   transform: translate(30vw,50%); 
-   transition: 1.2s ease-in-out;
-   box-shadow: 50px 50px 15px #00000060;
+   transform: translate(0,50%); 
+   box-shadow: 20px 0px 20px #383838;
     background-color: #fff;
-    margin-bottom: 5%;
 }
 
 .opendiary-wrap .opendiary{
@@ -144,7 +145,7 @@ div{
     top: 0;
     z-index: 20;
     justify-content: center;
-    transition: 1.2s ease-in-out;
+    transition: 1s ease-in-out;
     transform: rotateY(-180deg);
     transform-origin: left;
     background-color: #fff;
@@ -156,11 +157,13 @@ div{
     z-index: 0;
     backface-visibility: visible;
     -webkit-backface-visibility: visible;
+    width: 100%;
     background-color: #fff;
-    box-shadow: -208px 50px 15px #00000060;
+    transition: 1.5s ease-in-out;
+    box-shadow: -260px 0px 20px #383838;
     opacity: 1;
-    transition: 2.2s ease-in-out;
     transform: translateZ(-10px);
+ 
 }
 
 .opendiary-wrap .opendiary.front strong{

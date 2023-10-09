@@ -8,10 +8,28 @@ import rogoBlackImage from './image/rogo2.jpg';
 
 const App:React.FC = () => {
  
+/**다이어리*/
+const [bookOpen, setBookOpen] = useState<string>("diary front");
+const [bookChangeSize, setBookChangeSize] = useState<string>("diary-wrap");
+const [bookChangeColor, setBookChangeColor] = useState<string>("diary front back");
+const [contentSizeChange, setContentSizeChange] = useState<string>("diaryContent-wrap");
+const [textContentSizeChange, setTextContentSizeChange] = useState<string>("HomeText-wrap");
+
+
+const openBookhandle = () => 
+{
+   setBookOpen("opendiary front");
+   setBookChangeSize("opendiary-wrap");
+   setBookChangeColor("opendiary front back");
+   setContentSizeChange("opendiaryContent-wrap");
+   setTextContentSizeChange("changeHomeText-wrap");
+   
+}
+
+
   const [boxWidth, setBoxWidth] = useState<number>(0);
   const [boxHeight, setBoxHeight] = useState<number>(0);
   const [boxleft, setBoxleft] = useState<number>(0);
-
 
   useEffect(()=>{
 
@@ -57,6 +75,14 @@ const App:React.FC = () => {
 
     <div className='content-wrap'>
       <img className='contentImg' src={contentImage}></img>
+      <div className={bookChangeSize}>
+                    <div className='diary front back'></div>
+                    <div className={bookOpen} onClick={openBookhandle}>
+                        <strong>My Diary</strong>
+                    </div>
+                    <div className={bookChangeColor}></div>
+                    <div className='diary bottom'></div>
+                </div>
       <div className='content-inner'>
         <h1>
            매일 일기쓰기 도전
