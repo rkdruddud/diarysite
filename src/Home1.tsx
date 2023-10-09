@@ -1,5 +1,5 @@
 import React, { InputHTMLAttributes, useEffect, useState } from 'react';
-import './Home.css';
+import './Home1.css';
 import rogoImage from './image/rogo.jpg';
 import rogoBlackImage from './image/rogo2.jpg';
 import window1 from './image/window.jpg';
@@ -7,7 +7,7 @@ import {throttle} from 'lodash';
 
 
 
-const Home:React.FC = () => {  
+const Home1:React.FC = () => {  
     const [boxWidth, setBoxWidth] = useState<number>(0);
     const [boxHeight, setBoxHeight] = useState<number>(0);
     const [boxleft, setBoxleft] = useState<number>(0);
@@ -120,4 +120,4 @@ const Home:React.FC = () => {
     );
 }
 
-export default Home;
+export default Home1;
