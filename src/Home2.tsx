@@ -12,32 +12,65 @@ const Home2:React.FC = () => {
     const [bookOpen, setBookOpen] = useState<string>("diary front");
     const [bookChangeSize, setBookChangeSize] = useState<string>("diary-wrap");
     const [bookChangeColor, setBookChangeColor] = useState<string>("diary front back");
-   const [contentSizeChange, setContentSizeChange] = useState<string>("diaryContent-wrap");
-   const [textContentSizeChange, setTextContentSizeChange] = useState<string>("HomeText-wrap");
-
-
-
+ const [changeRightSlide, setChangeRightSlide] = useState<string>("right-side");
+  const [changeLeftSlide, setChangeLeftSlide] = useState<string>("left-side");
+  const [changeLeftTrackSlide, setChangeLeftTrackSlide] = useState<string>("slider-track-stop");
+  const [changeRightTrackSlide, setChangeRightTrackSlide] = useState<string>("slider-track-stop");
+  const [doorSizeValid, setDoorSizeValid] = useState<string>("doorContent-wrap");
+//  const [hiddenLeftBar,setHiddenLeftBar] = useState<string>("left-bar");
+//  const [hiddenRightBar,setHiddenRightBar] = useState<string>("right-bar");
 
     const openBookhandle = () => 
     {
         setBookOpen("opendiary front");
         setBookChangeSize("opendiary-wrap");
         setBookChangeColor("opendiary front back");
-        setContentSizeChange("opendiaryContent-wrap");
-        setTextContentSizeChange("changeHomeText-wrap");
+        setChangeRightSlide("right-side-slider");
+        setChangeLeftSlide("left-side-slider");
+        setChangeLeftTrackSlide("slider-track-left");
+        setChangeRightTrackSlide("slider-track-right");
+        setDoorSizeValid("sizeUp-doorContent-wrap")
+       // setHiddenLeftBar("hidden-bar");
+       // setHiddenRightBar("hidden-bar");
         
     }
 
     return(
        <div className='homeContent-wrap'>
 
-        <div className={textContentSizeChange}>
-        <img className='booksImg1' src={booksImage}></img>
-        <img className='booksImg2' src={booksImage}></img>
+        <div className="HomeText-wrap"> 
+      
+            <div className={changeLeftSlide}>
+            <div className={changeLeftTrackSlide}>
+                <div className='slide'><img  src={booksImage}></img></div>
+                <div className='slide'><img  src={booksImage}></img></div>
+                <div className='slide'><img  src={booksImage}></img></div>
+                <div className='slide'><img  src={booksImage}></img></div>
+            </div>
+        
+            </div>
+      
+            <div className={changeRightSlide}>
+            
+            <div className={changeRightTrackSlide}>
+                <div className='slide'><img  src={booksImage}></img></div>
+                <div className='slide'><img  src={booksImage}></img></div>
+                <div className='slide'><img  src={booksImage}></img></div>
+                <div className='slide'><img  src={booksImage}></img></div>
+            </div>
+        
+            </div>
+        
+
+            <div className='door-wrap'>
+       <div className={doorSizeValid}>
+            <div className='leftdoor'></div>
+            <div className='rightdoor'></div>
         </div>
 
-        <div className={contentSizeChange}>
+       </div> 
 
+        <div className='diaryContent-wrap'>
         <div className={bookChangeSize}>
                     <div className='diary front back'></div>
                     <div className={bookOpen} onClick={openBookhandle}>
@@ -46,8 +79,19 @@ const Home2:React.FC = () => {
                     <div className={bookChangeColor}></div>
                     <div className='diary bottom'></div>
                 </div>
-       </div>
+
         </div>
+
+      
+        </div>
+
+        <div className='floorContent-wrap'></div>
+       
+        
+        
+       </div>
+
+
 
     );
 }
