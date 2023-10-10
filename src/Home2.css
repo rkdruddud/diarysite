@@ -13,14 +13,15 @@ div{
     height: 100vh;
     object-fit: cover;
     background-color: blue;
-
+    perspective: 500px;
 }
 
 .HomeText-wrap{
     position: relative;
     width: 61.8vw;
     height: 100vh;
-    background-color: blue;
+    background-color: black;
+    perspective: 500px;
 }
 
 .changeHomeText-wrap{
@@ -45,6 +46,28 @@ div{
     background-color: yellow;
  
 }
+
+.booksImg1{
+    position: absolute;
+    width: 400px;
+    height: 390px;
+    top: 30%;
+    left: 15%;
+    transform-style: preserve-3d;
+    transform: rotateY(65deg);
+   
+}
+
+.booksImg2{
+    position: absolute;
+    width: 400px;
+    height: 390px;
+    top: 30%;
+    left: 15%;
+    transform-style: preserve-3d;
+    transform: rotateY(65deg) translateX(400px);
+}
+
 
 .diary-wrap{
    position: absolute;
