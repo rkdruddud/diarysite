@@ -12,7 +12,7 @@ div{
     width: 100vw;
     height: 100vh;
     object-fit: cover;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.945);
     perspective: 500px;
     z-index: 0;
 }
@@ -32,11 +32,134 @@ div{
     width: 100vw;
     height: 50vh;
     bottom: 0;
-    background-color: #fff;
+    background-color: #eeeeee;
     z-index: 3;
 
 }
+/**텍스트1*/
+.text-contents-wrap{
+    position: absolute;
+    display: block;
+    width: 800px;
+    height: 200px;
+    padding: 0;
+    margin: 0;
+    left: 30%;
+    bottom: 80%;
+    transform: translate(-60%,30%);
+    align-items: center;
+    z-index: 12;
+    animation: showText 1.2s ease-in-out;
+    perspective: 300px;
+    
+}
 
+.background-blind-wrap{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    z-index: 0;
+    background-color: rgba(0, 0, 0, 0.514);
+    border-radius: 10px;
+    box-shadow: 0px -10px 158px 20px rgb(0, 0, 0);
+    opacity: 0.5;
+}
+
+.title-text-wrap{
+    position: inherit;
+    width: 100%;
+    height: 60px;
+    top: 0;
+    margin: 10px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 45px;
+    color: #fff;
+    text-shadow: 5px 5px 20px black;
+    
+    z-index: 1;
+}
+
+.text-wrap{
+    position: inherit;
+    bottom: 0;
+    width: 100%;
+    height: 110px;
+    text-align: left;
+    margin: 10px;
+    font-weight: 500;
+    font-size: 30px;
+    color: #fff;
+    text-shadow: 20px 20px 20px black;
+    line-height: 45px;
+    z-index: 1;
+}
+
+/**텍스트2*/
+.second-text-contents-wrap{
+    position: absolute;
+    display: block;
+    width: 800px;
+    height: 200px;
+    padding: 0;
+    margin: 0;
+    left: 10%;
+    bottom: 80%;
+    transform: translate(-70%,30%);
+    align-items: center;
+    z-index: 12;
+    animation: showText 1.2s ease-in-out;
+    
+}
+
+.second-title-text-wrap{
+    position: inherit;
+    width: 100%;
+    height: 60px;
+    top: 0;
+    margin: 10px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 45px;
+    color: #fff;
+    text-shadow: 5px 5px 20px black;
+    z-index: 1;
+}
+
+.second-text-wrap{
+    position: inherit;
+    bottom: 0;
+    width: 100%;
+    height: 110px;
+    text-align: left;
+    margin: 10px;
+    font-weight: 500;
+    font-size: 30px;
+    color: #fff;
+    text-shadow: 20px 20px 20px black;
+    line-height: 45px;
+    z-index: 1;
+}
+
+.hidden-text-wrap{
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    display: none;
+}
+
+@keyframes showText {
+    0% {
+      
+        opacity: 0;
+    }
+
+    100% {
+       
+        opacity: 1;
+    }
+}
 
 /**문*/
 
@@ -54,7 +177,6 @@ div{
 .doorContent-wrap{
     position:absolute;
     display: flex;
-    background-color: #864d0a;
     width: 225px;
     height: 157px;
     transform: translateZ(0px) translateY(-5px) translateX(-10px);
@@ -63,12 +185,56 @@ div{
 .sizeUp-doorContent-wrap{
     position:absolute;
     display: flex;
-    background-color: #864d0a;
     width: 260px;
     height: 155px;
     transition: 1.25s ease-in-out;
     transform: translateZ(150px) translateX(-60px) translateY(-24px);
 }
+
+.leftdoor{
+    width: 50%;
+    height: 100%;
+    margin: 0;
+    border: 1px solid black;
+    background-image: linear-gradient(rgb(121, 84, 6), rgb(158, 104, 2), rgb(151, 99, 1), rgb(82, 50, 4));
+}
+
+.rightdoor{
+    
+    width: 50%;
+    height: 100%;
+    border: 1px solid black;
+    margin: 0;
+    background-image: linear-gradient(rgb(121, 84, 6), rgb(158, 104, 2), rgb(151, 99, 1), rgb(82, 50, 4));
+}
+
+
+.leftdoor .door-handle{
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    border: 1px solid black;
+    background-color: gray;
+    margin-top: 70px;
+    margin-left: 80%;
+
+}
+
+.rightdoor .door-handle{
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    border: 1px solid black;
+    background-color: gray;
+    margin-top: 70px;
+    margin-left: 5%;
+
+}
+
+
+
+
+
 
 /**이미지 슬라이드*/
 
@@ -223,12 +389,25 @@ div{
 
 /**다이어리*/
 
+@keyframes showDiary {
+    0% {
+       left: 100%;
+       opacity: 0;
+    }
+
+    100% {
+        left: 65%;
+        opacity: 1;
+    }
+}
+
 .diaryContent-wrap{
     position: absolute;
     left: 65%;
     width: 30vw;
     height: 100vh;
     z-index: 16;
+    animation: showDiary 1.7s ease-in-out;
 }
 
 .diary-wrap{
@@ -239,7 +418,7 @@ div{
     bottom: 50%;
     transform-style: preserve-3d;
    transform: translate(0,50%);
-    box-shadow: 20px 0px 20px #383838;
+    box-shadow: 20px 0px 20px #00000091;
     transition: .5s ease-in-out;
     z-index: 20;
 }
@@ -251,6 +430,24 @@ div{
     height: 370px;
     margin-bottom: 5%;
     cursor: pointer;
+}
+
+.diary-wrap .diarytext{
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    bottom:35%;
+    left: 25%;
+    font-size: 30px;
+    font-weight: 500;
+    color: #fff;
+    transform: translateZ(150px);
+    animation: showinnerText 1.2s;
+    text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.658);
+}
+
+.diary-wrap .inner-text{
+display: none;
 }
 
 .diary-wrap .diary {
@@ -278,8 +475,11 @@ div{
 }
 
 .diary-wrap .diary.front strong{
+    color: #ffffffd2;
+    margin-top: 20px;
     font-size: 45px;
     transition: .5s .1s;
+    text-shadow: -1px 0px 2px black, 0px 1px 2px black, 1px 0px 2px black, 0px -1px 2px black;
 }
 
 .diary-wrap:hover .diary.front strong{
@@ -311,6 +511,10 @@ div{
     box-sizing: border-box;
 }
 
+.diary-wrap .diary.front img{
+    display: none;
+}
+
 .opendiary-wrap{
     position: absolute;
     width: 260px;
@@ -322,11 +526,22 @@ div{
    box-shadow: 20px 0px 20px #383838;
     background-color: #fff;
     z-index: 20;
+    perspective: 500px;
+    
+}
+
+.opendiary-wrap strong{
+    position:inherit;
+    opacity: 0.4;
+    font-size: 10px;
+    color: black;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .opendiary-wrap .opendiary{
     position: absolute;
-    display: flex;
     width: 100%;
     height: 100%;
     top: 0;
@@ -350,11 +565,51 @@ div{
     box-shadow: -260px 0px 20px #383838;
     opacity: 1;
     transform: translateZ(-10px);
+    border-right: 1px solid black;
  
+}
+
+.opendiary-wrap .front{
+    border-left: 0.5px solid rgba(0, 0, 0, 0.178);
+
+}
+
+.opendiary-wrap .opendiary.front img{
+    position: absolute;
+    left: 20px;
+    width: 220px;
+    height: 200px;
+    margin-top: 30%;
+    animation: showinnerText 4.2s;
+}
+
+.opendiary-wrap .diarytext{
+    position: absolute;
+    width: 50%;
+    height: 40px;
+    left: 25%;
+    bottom:45%;
+    font-size: 30px;
+    font-weight: 500;
+    transform: translateZ(150px);
+    animation: showinnerText 4.2s;
+    text-shadow: 10px 10px 10px black;
 }
 
 .opendiary-wrap .opendiary.front strong{
     opacity: 0;
+    display: none;
     transition: 1.0s ease-in-out;
 }
 
+@keyframes showinnerText {
+    0% {
+        
+        opacity: 0;
+     }
+ 
+     100% {
+        
+         opacity: 1;
+     }
+}
