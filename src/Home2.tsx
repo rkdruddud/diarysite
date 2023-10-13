@@ -1,5 +1,6 @@
 import React, { InputHTMLAttributes, useEffect, useState } from 'react';
 import './Home2.css';
+import './Home2media.css';
 import rogoImage from './image/rogo.jpg';
 import rogoBlackImage from './image/rogo2.jpg';
 import booksImage from './image/books.jpg';
@@ -20,8 +21,7 @@ const Home2:React.FC = () => {
   const [doorSizeValid, setDoorSizeValid] = useState<string>("doorContent-wrap");
   const [visibleText1, setVisibleText1] = useState<string>("text-contents-wrap");
   const [visibleText2, setVisibleText2] = useState<string>("hidden-text-wrap");
-//  const [hiddenLeftBar,setHiddenLeftBar] = useState<string>("left-bar");
-//  const [hiddenRightBar,setHiddenRightBar] = useState<string>("right-bar");
+  const [hiddenBook, setHiddenBook] = useState<string>("diaryContent-wrap");
 
 /** 책 클릭 */
     const openBookhandle = () => 
@@ -36,9 +36,15 @@ const Home2:React.FC = () => {
         setDoorSizeValid("sizeUp-doorContent-wrap");
         setVisibleText1("hidden-text-wrap");
         setVisibleText2("second-text-contents-wrap");
-       // setHiddenLeftBar("hidden-bar");
-       // setHiddenRightBar("hidden-bar");
+       
         
+    }
+
+    const clickOpenBookHandle = () => {
+        setBookOpen("diary front");
+        setBookChangeSize("diary-wrap");
+        setBookChangeColor("diary front back");
+        setHiddenBook("");
     }
 
     return(
@@ -96,15 +102,15 @@ const Home2:React.FC = () => {
                 </div>
                 <div className='second-text-wrap'>
                         그날을 대표하는 사진을 넣고<br/>
-                        하루동안 있었던 일을 기록할 수 있어요.
+                        하루 동안 있었던 일을 기록할 수 있어요.
                     </div>
             </div>
         
 
        </div> 
 
-        <div className='diaryContent-wrap'>
-        <div className={bookChangeSize}>
+        <div className="diaryContent-wrap">
+        <div className={bookChangeSize} onClick={clickOpenBookHandle}>
         <div className='diarytext'>click here</div>
             <strong className='inner-text'>
             Where does it come from?

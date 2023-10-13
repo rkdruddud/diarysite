@@ -109,7 +109,7 @@ div{
     transform: translate(-70%,30%);
     align-items: center;
     z-index: 12;
-    animation: showText 1.2s ease-in-out;
+    animation: showText 2.5s ease-in-out;
     
 }
 
@@ -237,36 +237,6 @@ div{
 
 
 /**이미지 슬라이드*/
-
-.left-bar{
-    position: absolute;
-    left: 0;
-    width:6.1vw;
-    height: 44.2vw;
-    top: 5.8vh;
-    background-color: #7e7c7a;
-    z-index: 5;
-    opacity: 1;
-}
-
-
-.right-bar{
-    position: absolute;
-    left: 93.9vw;
-    width:6.1vw;
-    height: 44.2vw;
-    top: 5.8vh;
-    background-color: #7e7c7a;
-    z-index: 5;
-    opacity: 1;
-}
-
-.hidden-bar{
-    opacity: 0;
-    transition: 5s ease-in-out;
-    
-}
-
 .left-side{
     position: absolute;
     display: grid;
@@ -278,7 +248,7 @@ div{
     overflow: hidden;
     transform-style: preserve-3d;
     /*transform: rotateY(85deg) translateZ(-400px) translateX(450px);*/
-    transform: rotateY(85deg) translateZ(-420px) translateX(400px);
+    transform: rotateY(85deg) translateZ(-420px) translateX(410px);
     z-index: 6;
 }
 
@@ -292,7 +262,7 @@ div{
     place-items: center;
     overflow: hidden;
     transform-style: preserve-3d;
-    transform: rotateY(85deg) translateZ(-420px) translateX(400px);
+    transform: rotateY(85deg) translateZ(-420px) translateX(410px);
     z-index: 6;
 }
 
@@ -418,7 +388,7 @@ div{
     bottom: 50%;
     transform-style: preserve-3d;
    transform: translate(0,50%);
-    box-shadow: 20px 0px 20px #00000091;
+    box-shadow: 20px 20px 20px #00000091;
     transition: .5s ease-in-out;
     z-index: 20;
 }
@@ -523,7 +493,7 @@ display: none;
     right: 12vw;
     transform-style: preserve-3d;
    transform: translate(0,50%); 
-   box-shadow: 20px 0px 20px #383838;
+   box-shadow: 20px 0px 20px  #00000091;
     background-color: #fff;
     z-index: 20;
     perspective: 500px;
@@ -592,7 +562,7 @@ display: none;
     font-size: 30px;
     font-weight: 500;
     transform: translateZ(150px);
-    animation: showinnerText 4.2s;
+    transition: 3.5s;
     text-shadow: 10px 10px 10px black;
 }
 
@@ -600,6 +570,10 @@ display: none;
     opacity: 0;
     display: none;
     transition: 1.0s ease-in-out;
+}
+
+.hiddenDiaryContent-wrap{
+    display: none;
 }
 
 @keyframes showinnerText {

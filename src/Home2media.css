@@ -1,0 +1,255 @@
+@media  (max-width: 1560px) and (orientation: landscape) {
+
+.left-side{
+   
+    transform: rotateY(85deg) translateZ(-435px) translateX(254px);
+
+}
+
+
+.left-side-slider{
+   
+    transform: rotateY(85deg) translateZ(-445px) translateX(254px);
+
+}
+
+.right-side-slider{
+                 
+    transform: rotateY(-85deg) translateZ(360px) translateX(-290px);
+  }
+
+}
+
+@media  (max-width: 1480px) and (orientation: landscape) {
+
+    .left-side{
+       
+        transform: rotateY(85deg) translateZ(-455px) translateX(254px);
+    
+    }
+
+    .left-side-slider{
+       
+        transform: rotateY(85deg) translateZ(-470px) translateX(254px);
+    
+    }
+
+    .opendiary-wrap{
+       
+      right: 0vw;
+        
+    }
+
+    .second-text-contents-wrap{
+        left: 15%;
+    bottom: 80%;
+    transform: translate(-65%,30%);
+    }
+    
+    }
+
+    @media  (max-width: 1390px) and (orientation: landscape) {
+
+        .left-side{
+           
+            transform: rotateY(85deg) translateZ(-485px) translateX(254px);
+        
+        }
+
+        .left-side-slider{
+           
+            transform: rotateY(85deg) translateZ(-495px) translateX(254px);
+        
+        }
+        .opendiary-wrap{
+       
+            right: 2.5vw;
+              
+          }
+        }
+
+        @media  (max-width: 1300px) and (orientation: landscape) {
+
+            .left-side{
+               
+                transform: rotateY(85deg) translateZ(-515px) translateX(254px);
+            
+            }
+            .left-side-slider{
+               
+                transform: rotateY(85deg) translateZ(-530px) translateX(254px);
+            
+            }
+
+            .diaryContent-wrap{
+                left: 70%;
+            }
+
+            .second-text-contents-wrap{
+                left: 20%;
+            bottom: 80%;
+            transform: translate(-65%,30%);
+            }
+            
+            .opendiary-wrap{
+       
+                right: 5.5vw;
+                  
+              }
+
+            }
+
+            @media  (max-width: 1210px) and (orientation: landscape) {
+
+                .left-side{
+                   
+                    transform: rotateY(85deg) translateZ(-545px) translateX(254px);
+                
+                }
+
+                .right-side{
+                 
+                  transform: rotateY(-85deg) translateZ(325px) translateX(-400px);
+                }
+
+                .left-side-slider{
+                   
+                    transform: rotateY(85deg) translateZ(-545px) translateX(254px);
+                
+                }
+
+                .right-side-slider{
+                 
+                  transform: rotateY(-85deg) translateZ(325px) translateX(-400px);
+                }
+
+                .text-contents-wrap{
+                    left: 40%;
+                    bottom: 80%;
+                    transform: translate(-55%,40%);
+                    
+                }
+
+                .title-text-wrap{ 
+                    font-size: 35px;
+                }
+                
+                .text-wrap{
+                    font-size: 25px;
+                }
+
+                .second-text-contents-wrap{
+                    left: 20%;
+                bottom: 80%;
+                transform: translate(-60%,35%);
+                }
+
+                .second-title-text-wrap{
+                    font-size: 35px;
+                }
+                
+                .second-text-wrap{
+                    font-size: 25px;
+                }
+
+                }
+
+
+                @media  (max-width: 1160px) and (orientation: landscape) {
+
+                    .left-side{
+                       
+                        transform: rotateY(85deg) translateZ(-570px) translateX(254px);
+                    
+                    }
+
+                    .left-side-slider{
+                       
+                        transform: rotateY(85deg) translateZ(-570px) translateX(254px);
+                    
+                    }
+
+                    .diaryContent-wrap{
+                        left: 75%;
+                        
+                    }
+
+                    .second-text-contents-wrap{
+                        left: 20%;
+                    bottom: 40%;
+                    transform: translate(-58%,35%);
+                    }
+                    
+                    .second-title-text-wrap{
+                        font-size: 35px;
+                    }
+                    
+                    .second-text-wrap{
+                        font-size: 25px;
+                    }
+
+                    .opendiary-wrap{
+       
+                        left: -2.5vw;
+                          
+                      }
+        
+                    }
+
+                    @media  (max-width: 1080px) and (orientation: landscape) {
+
+                        .left-side{
+                           
+                            transform: rotateY(85deg) translateZ(-600px) translateX(254px);
+                        
+                        }
+
+                        .left-side-slider{
+                           
+                            transform: rotateY(85deg) translateZ(-600px) translateX(254px);
+                        
+                        }
+                        
+                        .text-contents-wrap{
+                            left: 40%;
+                            bottom: 80%;
+                            transform: translate(-50%,40%);
+                            
+                        }
+
+                        .second-text-contents-wrap{
+                            left: 20%;
+                        bottom: 40%;
+                        transform: translate(-55%,40%);
+                        }
+
+                        .opendiary-wrap{
+                            width: 240px;
+                            height: 350px;
+                        }
+
+.opendiary-wrap strong{
+    
+    font-size: 9px;
+    margin-top: 35px;
+}
+
+.opendiary-wrap .opendiary.front img{
+    left: 15px;
+    width: 210px;
+    height: 190px;
+    }
+
+.opendiary-wrap .diarytext{
+    left: 27%;
+    bottom:45%;
+    font-size: 25px;
+    
+}
+}
+
+  @media  (max-width: 960px) and (orientation: landscape) {
+
+    
+    
+        }                       
