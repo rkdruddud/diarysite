@@ -12,7 +12,7 @@ div{
     width: 100vw;
     height: 100vh;
     object-fit: cover;
-    background-color: rgba(0, 0, 0, 0.945);
+    background-color: rgb(0, 0, 0);
     perspective: 500px;
     z-index: 0;
 }
@@ -191,6 +191,37 @@ div{
     transform: translateZ(150px) translateX(-60px) translateY(-24px);
 }
 
+.againSizeUp-doorContent-wrap{
+    position:absolute;
+    display: flex;
+    width: 240px;
+    height: 135px;
+    transition: 1.25s ease-in-out;
+    transform: translateZ(280px) translateX(-68px) translateY(-35px);
+}
+
+.againSizeUp-doorContent-wrap .leftdoor .door-handle{
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    border: 0.5px solid black;
+    background-color: gray;
+    margin-top: 70px;
+    margin-left: 80%;
+
+}
+
+.againSizeUp-doorContent-wrap .rightdoor .door-handle{
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    border: 0.5px solid black;
+    background-color: gray;
+    margin-top: 70px;
+    margin-left: 10%;
+
+}
+
 .leftdoor{
     width: 50%;
     height: 100%;
@@ -311,6 +342,53 @@ div{
     
 }
 
+.left-side-slider-again{
+    position: absolute;
+    display: grid;
+    width: 1691px;
+    height: 390px;
+    top: 200px;
+    left: 0;
+    place-items: center;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transform: rotateY(85deg) translateZ(-420px) translateX(410px);
+    z-index: 6;
+}
+
+.right-side-slider-again{
+    position: absolute;
+    display: grid;
+    width: 1691px;
+    height: 390px;
+    top: 200px;
+    left: calc(6.05vw*7);
+    place-items: center;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transform: rotateY(-85deg) translateZ(350px) translateX(-400px);
+    z-index: 6;
+}
+
+
+.slider-track-left-again{
+    display: flex;
+    width: calc(422.74px*4);
+    animation: scrollLeftAgain 0.97s linear;
+    z-index: 10;
+    
+}
+
+.slider-track-right-again{
+    display: flex;
+    width: calc(422.74px*4);
+    animation: scrollRightAgain 0.97s linear;
+    z-index: 10;
+    
+}
+
+
+
 .slider-track-stop{
     display: flex;
     width: calc(422.74px*4);
@@ -352,6 +430,27 @@ div{
 
     100% {
         transform: translateX(calc(105.685px*4));
+    }
+}
+
+@keyframes scrollLeftAgain {
+    0% {
+        transform: translateX(calc(-105.685px*4));
+    }
+
+    100% {
+        transform: translateX(calc(-105.685px*8));
+    }
+}
+
+
+@keyframes scrollRightAgain {
+    0% {
+        transform: translateX(calc(105.685px*4)); 
+    }
+
+    100% {
+        transform: translateX(calc(105.685px*8));
     }
 }
 
@@ -497,6 +596,7 @@ display: none;
     background-color: #fff;
     z-index: 20;
     perspective: 500px;
+    cursor: pointer;
     
 }
 
@@ -568,12 +668,113 @@ display: none;
 
 .opendiary-wrap .opendiary.front strong{
     opacity: 0;
-    display: none;
-    transition: 1.0s ease-in-out;
+    transition: 0.9s;
 }
 
 .hiddenDiaryContent-wrap{
+    position: absolute;
+    left: 65%;
+    width: 30vw;
+    height: 100vh;
+    z-index: 16;
     display: none;
+    opacity: 0;
+    animation: hiddenBook 2s;
+}
+.hiddenDiaryContent-wrap .diary-wrap{
+    position: absolute;
+    width: 260px;
+    height: 370px;
+    bottom: 50%;
+    right: 12vw;
+    transform-style: preserve-3d;
+   transform: translate(0,50%); 
+   box-shadow: 20px 0px 20px  #00000091;
+    background-color: #fff;
+    z-index: 20;
+    perspective: 500px;
+    
+    
+}
+.hiddenDiaryContent-wrap .diary-wrap .diarytext{
+    display: none;
+}
+
+.hiddenDiaryContent-wrap .diary-wrap .inner-text{
+
+    display: inherit !important;
+    opacity: 0.4;
+    font-size: 10px;
+    color: black;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    z-index: 10;  
+}
+
+.hiddenDiaryContent-wrap .diary-wrap .diary{
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: 20;
+    justify-content: center;
+    transform: rotateY(0deg);
+    transform-origin: left;
+}
+
+
+.hiddenDiaryContent-wrap .diary-wrap .diary.front {
+    position: absolute;
+    display: flex;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    justify-content: center;
+    align-items: baseline;
+    transform-origin: 0px 0px;
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
+    background-color: #864d0a;
+
+}
+
+.hiddenDiaryContent-wrap .diary-wrap .front.back{
+    width: 10%;
+    transition: 0s !important;
+}
+
+.hiddenDiaryContent-wrap .diary-wrap .diary.bottom{
+   display: none;
+}
+
+.hiddenDiaryContent-wrap .diary-wrap .diary.front img{
+    display: none;
+}
+
+.hiddenDiaryContent-wrap .diary-wrap .diary.front strong{
+   opacity: 1;
+    color: #ffffffd2;
+    margin-top: 20px;
+    font-size: 45px;
+    transition: 2.2s;
+    text-shadow: -1px 0px 2px black, 0px 1px 2px black, 1px 0px 2px black, 0px -1px 2px black;
+}
+
+@keyframes hiddenBook {
+    0% {
+        opacity: 1;
+        display: flex;
+    }
+
+    50%{
+        opacity: 1;
+    }
+
+    100%{
+        opacity: 0;
+    }
 }
 
 @keyframes showinnerText {

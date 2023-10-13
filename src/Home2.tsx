@@ -26,26 +26,41 @@ const Home2:React.FC = () => {
 /** 책 클릭 */
     const openBookhandle = () => 
     {
-        setBookOpen("opendiary front");
-        setBookChangeSize("opendiary-wrap");
-        setBookChangeColor("opendiary front back");
-        setChangeRightSlide("right-side-slider");
-        setChangeLeftSlide("left-side-slider");
-        setChangeLeftTrackSlide("slider-track-left");
-        setChangeRightTrackSlide("slider-track-right");
-        setDoorSizeValid("sizeUp-doorContent-wrap");
-        setVisibleText1("hidden-text-wrap");
-        setVisibleText2("second-text-contents-wrap");
+
+        if(hiddenBook === "diaryContent-wrap"){
+            
+        
+        if(bookOpen === "diary front"){
+            setBookOpen("opendiary front");
+            setBookChangeSize("opendiary-wrap");
+            setBookChangeColor("opendiary front back");
+            setChangeRightSlide("right-side-slider");
+            setChangeLeftSlide("left-side-slider");
+            setChangeLeftTrackSlide("slider-track-left");
+            setChangeRightTrackSlide("slider-track-right");
+            setDoorSizeValid("sizeUp-doorContent-wrap");
+            setVisibleText1("hidden-text-wrap");
+            setVisibleText2("second-text-contents-wrap");
+        }
+        
+        if(bookOpen === "opendiary front"){
+            setBookOpen("diary front");
+            setBookChangeSize("diary-wrap");
+            setBookChangeColor("diary front back");
+            setHiddenBook("hiddenDiaryContent-wrap");
+            setChangeRightSlide("right-side-slider-again");
+            setChangeLeftSlide("left-side-slider-again");
+            setChangeLeftTrackSlide("slider-track-left-again");
+            setChangeRightTrackSlide("slider-track-right-again");
+            setVisibleText2("hidden-text-wrap");
+            setDoorSizeValid("againSizeUp-doorContent-wrap");
+        }
        
+    }
         
     }
 
-    const clickOpenBookHandle = () => {
-        setBookOpen("diary front");
-        setBookChangeSize("diary-wrap");
-        setBookChangeColor("diary front back");
-        setHiddenBook("");
-    }
+   
 
     return(
        <div className='homeContent-wrap'>
@@ -109,8 +124,8 @@ const Home2:React.FC = () => {
 
        </div> 
 
-        <div className="diaryContent-wrap">
-        <div className={bookChangeSize} onClick={clickOpenBookHandle}>
+        <div className={hiddenBook}>
+        <div className={bookChangeSize} onClick={openBookhandle}>
         <div className='diarytext'>click here</div>
             <strong className='inner-text'>
             Where does it come from?
@@ -127,7 +142,7 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
 al form, accompanied by English versions from the 1914 translation by H. Rackham.
             </strong>
                     <div className='diary front back'></div>
-                    <div className={bookOpen} onClick={openBookhandle}>
+                    <div className={bookOpen}>
                         <img src={travel}></img>
                         
                         <strong>My Diary</strong>

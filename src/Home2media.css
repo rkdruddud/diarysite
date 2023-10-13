@@ -9,14 +9,26 @@
 
 .left-side-slider{
    
-    transform: rotateY(85deg) translateZ(-445px) translateX(254px);
+    transform: rotateY(85deg) translateZ(-425px) translateX(254px);
 
 }
 
 .right-side-slider{
                  
+    transform: rotateY(-85deg) translateZ(380px) translateX(-290px);
+  }
+
+  .left-side-slider-again{
+   
+    transform: rotateY(85deg) translateZ(-405px) translateX(254px);
+
+}
+
+.right-side-slider-again{
+                 
     transform: rotateY(-85deg) translateZ(360px) translateX(-290px);
   }
+
 
 }
 
@@ -29,6 +41,11 @@
     }
 
     .left-side-slider{
+       
+        transform: rotateY(85deg) translateZ(-470px) translateX(254px);
+    
+    }
+    .left-side-slider-again{
        
         transform: rotateY(85deg) translateZ(-470px) translateX(254px);
     
@@ -61,6 +78,13 @@
             transform: rotateY(85deg) translateZ(-495px) translateX(254px);
         
         }
+
+        .left-side-slider-again{
+           
+            transform: rotateY(85deg) translateZ(-495px) translateX(254px);
+        
+        }
+
         .opendiary-wrap{
        
             right: 2.5vw;
@@ -72,10 +96,16 @@
 
             .left-side{
                
-                transform: rotateY(85deg) translateZ(-515px) translateX(254px);
+                transform: rotateY(85deg) translateZ(-505px) translateX(254px);
             
             }
             .left-side-slider{
+               
+                transform: rotateY(85deg) translateZ(-530px) translateX(254px);
+            
+            }
+
+            .left-side-slider-again{
                
                 transform: rotateY(85deg) translateZ(-530px) translateX(254px);
             
@@ -91,6 +121,15 @@
             transform: translate(-65%,30%);
             }
             
+            .sizeUp-doorContent-wrap{
+                position:absolute;
+                display: flex;
+                width: 265px;
+                height: 155px;
+                transition: 1.25s ease-out;
+                transform: translateZ(150px) translateX(-70px) translateY(-24px);
+            }
+
             .opendiary-wrap{
        
                 right: 5.5vw;
@@ -98,6 +137,21 @@
               }
 
             }
+
+            @media  (max-width: 1250px) and (orientation: landscape) {
+
+                .left-side{
+                   
+                    transform: rotateY(85deg) translateZ(-515px) translateX(254px);
+                
+                }
+                .left-side-slider{
+                   
+                    transform: rotateY(85deg) translateZ(-530px) translateX(254px);
+                
+                }
+    
+                }
 
             @media  (max-width: 1210px) and (orientation: landscape) {
 
@@ -122,6 +176,18 @@
                  
                   transform: rotateY(-85deg) translateZ(325px) translateX(-400px);
                 }
+
+                .left-side-slider-again{
+                   
+                    transform: rotateY(85deg) translateZ(-545px) translateX(254px);
+                
+                }
+
+                .right-side-slider-again{
+                 
+                  transform: rotateY(-85deg) translateZ(325px) translateX(-400px);
+                }
+
 
                 .text-contents-wrap{
                     left: 40%;
@@ -169,6 +235,12 @@
                     
                     }
 
+                    .left-side-slider-again{
+                       
+                        transform: rotateY(85deg) translateZ(-570px) translateX(254px);
+                    
+                    }
+
                     .diaryContent-wrap{
                         left: 75%;
                         
@@ -205,6 +277,12 @@
                         }
 
                         .left-side-slider{
+                           
+                            transform: rotateY(85deg) translateZ(-600px) translateX(254px);
+                        
+                        }
+
+                        .left-side-slider-again{
                            
                             transform: rotateY(85deg) translateZ(-600px) translateX(254px);
                         
