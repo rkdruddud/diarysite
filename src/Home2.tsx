@@ -1,6 +1,7 @@
 import React, { InputHTMLAttributes, useEffect, useState } from 'react';
+import {Routes, Route, Link} from "react-router-dom";
 import './Home2.css';
-import './Home2media.css';
+import './mediaCSS/Home2media.css';
 import rogoImage from './image/rogo.jpg';
 import rogoBlackImage from './image/rogo2.jpg';
 import booksImage from './image/books.jpg';
@@ -21,6 +22,7 @@ const Home2:React.FC = () => {
   const [doorSizeValid, setDoorSizeValid] = useState<string>("doorContent-wrap");
   const [visibleText1, setVisibleText1] = useState<string>("text-contents-wrap");
   const [visibleText2, setVisibleText2] = useState<string>("hidden-text-wrap");
+  const [visibleText3, setVisibleText3] = useState<string>("hidden-text-wrap");
   const [hiddenBook, setHiddenBook] = useState<string>("diaryContent-wrap");
 
 /** 책 클릭 */
@@ -54,13 +56,12 @@ const Home2:React.FC = () => {
             setChangeRightTrackSlide("slider-track-right-again");
             setVisibleText2("hidden-text-wrap");
             setDoorSizeValid("againSizeUp-doorContent-wrap");
+            setVisibleText3("third-text-contents-wrap");
         }
        
     }
         
     }
-
-   
 
     return(
        <div className='homeContent-wrap'>
@@ -119,6 +120,16 @@ const Home2:React.FC = () => {
                         그날을 대표하는 사진을 넣고<br/>
                         하루 동안 있었던 일을 기록할 수 있어요.
                     </div>
+            </div>
+
+            <div className={visibleText3}>
+                
+                <div className='third-title-text-wrap'>
+                    Start create diary
+                </div>
+                <Link to="/Login" className='third-text-wrap'>
+                        Start
+                    </Link>
             </div>
         
 

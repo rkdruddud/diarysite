@@ -1,0 +1,105 @@
+
+
+.login-contents{
+width: 100vw;
+height: 100vh;
+}
+
+.login-backgroundimg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-repeat: no-repeat;
+
+}
+
+.login-wrap{
+    position: absolute;
+    display: flex;
+    width: 650px;
+    height: 100%; 
+    left: 50%;
+    transform: translate(-50%);   
+}
+
+.login-inner-wrap{
+    position: inherit;
+    width: 580px;
+    height: 550px;
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%,50%);
+    border-radius: 10px;
+    border: 5px solid #fff;
+    background-color: rgba(131, 130, 130, 0.884);
+}
+
+.login-wrap input{
+    position: relative;
+    display: block;
+    width: 80%;
+    height: 45px;
+    margin-bottom: 10%;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+.login-wrap input::placeholder{
+    color: rgba(128, 128, 128, 0.699);
+}
+
+.login-wrap .input-id{
+    position: absolute;
+    left: 50%;
+    bottom: 45%;
+    transform: translate(-50%,60%);
+    border: 2px solid rgba(31, 30, 30, 0.685);
+}
+
+.login-wrap .input-pw{
+    position: absolute;
+    left: 50%;
+    bottom: 32%;
+    transform: translate(-50%,50%);
+    border: 2px solid rgba(31, 30, 30, 0.685);
+}
+
+.etc-wrap{
+    position: absolute;
+    display: flex;
+    width: 350px;
+    height: 25px;
+    left: 20%;
+    bottom: 15%;
+    
+}
+
+.etc-wrap span{
+    cursor: pointer;
+    margin-left: 35px;
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.etc-wrap span .etc-link{
+    text-decoration: none;
+    color: #fff;
+}
+
+.etc-wrap span .etc-link:hover{
+    color: #000000;
+}
+
+.login-button{
+    position: absolute;
+    width: 60%;
+    height: 45px;
+    left: 50%;
+    bottom: 27%;
+    transform: translate(-50%,50%);
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 30px;
+    border: 2px solid rgba(31, 30, 30, 0.685);
+}

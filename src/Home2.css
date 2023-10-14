@@ -12,7 +12,7 @@ div{
     width: 100vw;
     height: 100vh;
     object-fit: cover;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(90, 90, 90);
     perspective: 500px;
     z-index: 0;
 }
@@ -32,7 +32,8 @@ div{
     width: 100vw;
     height: 50vh;
     bottom: 0;
-    background-color: #eeeeee;
+    
+    background-color:  rgb(170, 170, 170);
     z-index: 3;
 
 }
@@ -140,6 +141,59 @@ div{
     text-shadow: 20px 20px 20px black;
     line-height: 45px;
     z-index: 1;
+}
+
+/**텍스트3*/
+.third-text-contents-wrap{
+    position: absolute;
+    display: block;
+    width: 800px;
+    height: 300px;
+    padding: 0;
+    margin: 0;
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-35%,40%);
+    align-items: center;
+    z-index: 12;
+    animation: showText 2.5s ease-in-out;
+}
+
+
+.third-title-text-wrap{
+    position: inherit;
+    width: 100%;
+    height: 60px;
+    top: 0;
+    text-align: center;
+    font-weight: 600;
+    font-size: 60px;
+    color: #fff;
+    text-shadow: 5px 5px 20px black;
+    z-index: 1;
+    cursor: default;
+}
+
+.third-text-wrap{
+    position: inherit;
+    bottom: 0;
+    width: 20%;
+    height: 50px;
+    left: 50%;
+    bottom: 35%;
+    transform: translate(-50%,50%);
+    text-align: center;
+    font-weight: 500;
+    font-size: 40px;
+    color: #fff;
+    text-shadow: 20px 20px 20px black;
+    line-height: 45px;
+    letter-spacing: 5px;
+    z-index: 1;
+    background-color: #a8753baf;
+    border: 3px solid #fff;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .hidden-text-wrap{
@@ -278,7 +332,7 @@ div{
     place-items: center;
     overflow: hidden;
     transform-style: preserve-3d;
-    /*transform: rotateY(85deg) translateZ(-400px) translateX(450px);*/
+    box-shadow:100px 0px 200px 1px rgba(245, 245, 228, 0.808);
     transform: rotateY(85deg) translateZ(-420px) translateX(410px);
     z-index: 6;
 }
@@ -295,6 +349,7 @@ div{
     transform-style: preserve-3d;
     transform: rotateY(85deg) translateZ(-420px) translateX(410px);
     z-index: 6;
+    box-shadow:100px 0px 200px 1px rgba(245, 245, 228, 0.808);
 }
 
 .right-side{
@@ -307,7 +362,7 @@ div{
     place-items: center;
     overflow: hidden;
     transform-style: preserve-3d;
-  /*  transform: rotateY(-85deg) translateZ(363.5px) translateX(-518.9px);*/
+    box-shadow:100px 0px 200px 1px rgba(245, 245, 228, 0.808);
   transform: rotateY(-85deg) translateZ(350px) translateX(-400px);
     z-index: 6;
 }
@@ -324,6 +379,7 @@ div{
     transform-style: preserve-3d;
     transform: rotateY(-85deg) translateZ(350px) translateX(-400px);
     z-index: 6;
+    box-shadow:100px 0px 200px 1px rgba(245, 245, 228, 0.808);
 }
 
 .slider-track-left{
@@ -354,6 +410,7 @@ div{
     transform-style: preserve-3d;
     transform: rotateY(85deg) translateZ(-420px) translateX(410px);
     z-index: 6;
+    box-shadow:100px 0px 200px 1px rgba(245, 245, 228, 0.808);
 }
 
 .right-side-slider-again{
@@ -368,6 +425,7 @@ div{
     transform-style: preserve-3d;
     transform: rotateY(-85deg) translateZ(350px) translateX(-400px);
     z-index: 6;
+    box-shadow:100px 0px 200px 1px rgba(245, 245, 228, 0.808);
 }
 
 

@@ -1,0 +1,37 @@
+.register-contents{
+    width: 100vw;
+    height: 100vh;
+}
+
+.register-backgroundimg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-repeat: no-repeat;
+
+}
+
+.register-wrap{
+
+    position: absolute;
+    display: flex;
+    width: 650px;
+    height: 100%; 
+    left: 50%;
+    transform: translate(-50%); 
+    
+}
+
+.register-inner-wrap{
+
+    position: inherit;
+    width: 580px;
+    height: 550px;
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%,50%);
+    border-radius: 10px;
+    border: 5px solid #fff;
+    background-color: rgba(131, 130, 130, 0.884);
+}

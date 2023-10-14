@@ -1,0 +1,67 @@
+.findID-contents{
+    width: 100vw;
+    height: 100vh;
+}
+
+.findID-backgroundimg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-repeat: no-repeat;
+
+}
+
+.findID-wrap{
+
+    position: absolute;
+    display: flex;
+    width: 650px;
+    height: 100%; 
+    left: 50%;
+    transform: translate(-50%); 
+    
+}
+
+.findID-inner-wrap{
+
+    position: inherit;
+    width: 580px;
+    height: 550px;
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%,50%);
+    border-radius: 10px;
+    border: 5px solid #fff;
+    background-color: rgba(131, 130, 130, 0.884);
+}
+
+.findID-input {
+    position: relative;
+    display: block;
+    width: 80%;
+    height: 45px;
+    margin-bottom: 10%;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+.findID-input::placeholder{
+    color: rgba(128, 128, 128, 0.699);
+}
+
+.findID-input.name{
+    position: absolute;
+    left: 50%;
+    bottom: 45%;
+    transform: translate(-50%,60%);
+    border: 2px solid rgba(31, 30, 30, 0.685);
+}
+
+.findID-input.phonNumber{
+    position: absolute;
+    left: 50%;
+    bottom: 32%;
+    transform: translate(-50%,50%);
+    border: 2px solid rgba(31, 30, 30, 0.685);
+}
