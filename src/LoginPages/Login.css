@@ -32,13 +32,43 @@ height: 100vh;
     transform: translate(-50%,50%);
     border-radius: 10px;
     border: 5px solid #fff;
-    background-color: rgba(131, 130, 130, 0.884);
+    background-color: rgba(214, 214, 214, 0.884);
 }
+
+.logo-wrap{
+    position: inherit;
+    width: 100%;
+    height: 150px;
+    margin-top: 25px;
+    
+}
+
+.logo-wrap img{
+    position: inherit;
+    width: 28%;
+    left: 50%;
+    transform: translate(-50%);
+    
+}
+
+.logo-wrap p{
+    position: inherit;
+    left: 50%;
+    transform: translate(-50%);
+    margin: 0 !important;
+    bottom: 0;
+    color: #fff;
+    font-weight: 600;
+    font-size: 20px;
+    
+
+}
+
 
 .login-wrap input{
     position: relative;
     display: block;
-    width: 80%;
+    width: 100%;
     height: 45px;
     margin-bottom: 10%;
     border-radius: 10px;
@@ -49,20 +79,55 @@ height: 100vh;
     color: rgba(128, 128, 128, 0.699);
 }
 
-.login-wrap .input-id{
+
+.login-wrap .input-id-wrap{
     position: absolute;
+    width: 80%;
+    height: 75px;
     left: 50%;
-    bottom: 45%;
+    bottom: 57%;
+    transform: translate(-50%,57%);
+}
+
+.login-wrap .input-pw-wrap{
+    position: absolute;
+    width: 80%;
+    height: 75px;
+    left: 50%;
+    bottom: 41%;
     transform: translate(-50%,60%);
+   
+}
+
+.login-wrap .input-id{
     border: 2px solid rgba(31, 30, 30, 0.685);
 }
 
 .login-wrap .input-pw{
-    position: absolute;
-    left: 50%;
-    bottom: 32%;
-    transform: translate(-50%,50%);
     border: 2px solid rgba(31, 30, 30, 0.685);
+}
+
+.errorMessageWrap.id {
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    bottom: 0;
+    margin-top: 5px;
+    margin-left: 10px;
+    color: rgb(255, 0, 0);
+    font-size: 15px;
+}
+
+.errorMessageWrap.password {
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    bottom: 0;
+    margin-top: 5px;
+    margin-left: 10px;
+    color: rgb(255, 0, 0);
+    font-size: 15px;
+    
 }
 
 .etc-wrap{
@@ -71,7 +136,7 @@ height: 100vh;
     width: 350px;
     height: 25px;
     left: 20%;
-    bottom: 15%;
+    bottom: 14%;
     
 }
 
@@ -96,7 +161,7 @@ height: 100vh;
     width: 60%;
     height: 45px;
     left: 50%;
-    bottom: 27%;
+    bottom: 26%;
     transform: translate(-50%,50%);
     font-size: 20px;
     font-weight: 700;

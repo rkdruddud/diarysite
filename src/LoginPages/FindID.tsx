@@ -10,8 +10,11 @@ const FindID:React.FC =()=>{
              <img src={backgroundimg} className='findID-backgroundimg'></img>
             <div className='findID-wrap'>
                 <div className='findID-inner-wrap'>
-                 <input type='text' className='findID-input name' placeholder='이름을 입력해주세요.'></input>
+                    <div >
+                    <input type='text' className='findID-input name' placeholder='이름을 입력해주세요.'></input>
                  <input type='text' className='findID-input phonNumber' placeholder='핸드폰 번호를 입력해주세요.'></input>
+                    </div>
+                 
                 </div>
 
             </div>

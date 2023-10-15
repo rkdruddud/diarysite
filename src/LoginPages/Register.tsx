@@ -9,7 +9,7 @@ const Register:React.FC =()=>{
              <img src={backgroundimg} className='register-backgroundimg'></img>
             <div className='register-wrap'>
                 <div className='register-inner-wrap'>
-                    회원가입
+                    
                 </div>
 
             </div>
