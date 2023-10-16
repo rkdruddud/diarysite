@@ -27,11 +27,132 @@
 
     position: inherit;
     width: 580px;
-    height: 550px;
+    height: 750px;
     left: 50%;
     bottom: 50%;
     transform: translate(-50%,50%);
     border-radius: 10px;
     border: 5px solid #fff;
-    background-color: rgba(131, 130, 130, 0.884);
+    background-color: rgba(214, 214, 214, 0.884);
 }
+
+.register-input-wrap{
+    position: inherit;
+    width:70%;
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%,50%);
+    
+}
+
+.register-input-wrap h1{
+    
+    margin-bottom: 40px;
+    cursor: default;
+    
+}
+
+.register-inner-wrap input{
+    position: relative;
+    display: block;
+    width: 98%;
+    height: 45px;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+.register-inner-wrap input::placeholder{
+    color: rgba(128, 128, 128, 0.699);
+}
+
+.register-inner-wrap .input-registerInfo{
+    width: 100%;
+    height: 75px;
+    margin-bottom: 10px;
+}
+
+.register-inner-wrap .input-registerInfo.id{
+    width: 100%;
+    height: 75px;
+    margin-bottom: 10px;
+}
+
+.inputId-wrap {
+    display:flex;
+    width: 100%;
+    height: 45px;
+}
+
+.input-registerInfo.id .inputInfo.id{
+   width: 80% !important;
+   border-radius: 0px !important;
+   border-top-left-radius: 10px !important;
+   border-bottom-left-radius: 10px !important;
+   border-right:0px;
+}
+
+
+.input-registerInfo.id .duplicationIdCheckBtn{
+    width: 20%;
+    height: 51px;
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color:  rgb(71, 71, 71);
+    color: #fff;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    cursor: pointer;   
+ }
+ 
+ .input-registerInfo.id .duplicationIdCheckBtn:hover{
+    background-color: #fff;
+    color: black;
+    cursor: pointer;   
+ }
+
+ .register-inner-wrap .inputInfo.name{
+   
+ }
+ 
+ .register-button-wrap{
+    display: flex;
+    margin-top: 20px;
+    width: 100%;
+    height: 75px;
+    
+ }
+
+ .register-button-wrap .registerBtn{
+ width: 30% !important;
+ height: 45px;
+ color:#fff;
+ background-color: rgb(71, 71, 71);
+ border-radius: 10px;   
+ font-size: 15px;
+ font-weight: 600;
+ text-align: center;
+ cursor: pointer;
+ }
+
+ .register-button-wrap .registerBtn:hover{
+    color: black;
+    background-color: #fff;
+    cursor: pointer;
+ }
+
+ .register-button-wrap .registerBtn.confirm{
+    margin-left: 61.2px;    
+ }
+
+ .register-button-wrap .registerBtn.cancle{
+   margin-left: 40px;
+ }
+
+ .errorMessageWrap {
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 10px;
+    color: red;
+    font-size: 15px;
+
+ }
