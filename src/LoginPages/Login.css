@@ -48,7 +48,7 @@ height: 100vh;
     width: 28%;
     left: 50%;
     transform: translate(-50%);
-    
+    cursor: pointer;
 }
 
 .logo-wrap p{
@@ -60,7 +60,7 @@ height: 100vh;
     color: #fff;
     font-weight: 600;
     font-size: 20px;
-    
+    cursor: default;
 
 }
 
@@ -167,4 +167,9 @@ height: 100vh;
     font-weight: 700;
     border-radius: 30px;
     border: 2px solid rgba(31, 30, 30, 0.685);
+}
+
+.login-button:hover{
+    color:#fff;
+    background-color: black;
 }

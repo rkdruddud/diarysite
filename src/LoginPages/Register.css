@@ -110,10 +110,6 @@
     cursor: pointer;   
  }
 
- .register-inner-wrap .inputInfo.name{
-   
- }
- 
  .register-button-wrap{
     display: flex;
     margin-top: 20px;

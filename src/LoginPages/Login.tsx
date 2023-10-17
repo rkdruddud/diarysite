@@ -1,5 +1,5 @@
 import React, { InputHTMLAttributes, useEffect, useState } from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import backgroundimg from '../image/backgroundimg.jpg';
 import logoimg from '../image/logo.jpg';
 import "./Login.css";
@@ -13,6 +13,8 @@ const Login:React.FC =()=>{
 
     const [idValid, setIDValid] = useState<boolean>(false);
     const [pwValid, setPWValid] = useState<boolean>(false);
+
+    const navigate = useNavigate();
 
     const idHandle = (e : React.ChangeEvent<HTMLInputElement>) => {
         setID(e.target.value); 
@@ -37,6 +39,9 @@ const Login:React.FC =()=>{
         }
     }
 
+    const moveBackPage = () =>{
+        navigate(-1);
+    }
 
     return (
         <div className='login-contents'>
@@ -44,7 +49,7 @@ const Login:React.FC =()=>{
             <div className='login-wrap'>
                 <div className='login-inner-wrap'>
                     <div className='logo-wrap'>
-                        <img src={logoimg}></img>
+                        <img src={logoimg}  onClick={moveBackPage}></img>
                         <p>Welcome to DiaryQest</p>
                     </div>
 

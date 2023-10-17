@@ -31,5 +31,155 @@
     transform: translate(-50%,50%);
     border-radius: 10px;
     border: 5px solid #fff;
-    background-color: rgba(131, 130, 130, 0.884);
+    background-color: rgba(214, 214, 214, 0.884);
+}
+
+
+.findPW-input-wrap{
+    position: inherit;
+    width:70%;
+    height: 80%;
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%,50%);
+    
+}
+
+.findPW-input-wrap h1{
+    margin-bottom: 40px;
+    cursor: default;
+}
+
+.findPWinfo{
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.findPWinfo.id{
+    width: 98%;
+    height: 75px;
+    bottom: 50%;
+    transform: translate(0,50%);
+}
+
+.findPWinfo.email{
+    width: 100%;
+    height: 75px;
+    bottom: 40%;
+    transform: translate(0,40%);
+  
+}
+
+
+.findPW-input{
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 45px;
+    font-size: 15px;
+}
+
+.emailInput-wrap{
+    display: flex;
+    width: 100%;
+    height: 45px;
+}
+
+.findPW-input.id{
+    border-radius: 10px;
+}
+.findPW-input.email{
+    border-radius: none !important;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-right: 0px;
+}
+
+.emailCheckBtn {
+    width: 40%;
+    height: 51px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    
+}
+
+.emailCheckBtn:hover {
+    color: #fff;
+    background-color: black;
+}
+
+.findPW-input::placeholder{
+    color: rgba(128, 128, 128, 0.699);
+}
+
+
+.certificationNumber-wrap{
+    
+    width: 100%;
+    height: 45px;
+    border-radius: 10px;
+    background-color: blue;
+    transform: translate(0,40%);
+}
+
+.hidden-certificationNumber-wrap{
+    display: none;
+}
+
+.certificationNumber-input-wrap{
+    display: flex;
+    width: 100%;
+    height: 100%;
+
+}
+
+.findPW-input.checknumber{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-right: 0px;
+}
+
+.numberCheckBtn{
+    width: 40%;
+    height: 51px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.numberCheckBtn:hover{
+    color: #fff;
+    background-color: black;
+}
+
+.findPW-btn-wrap{
+    display: flex;
+    width: 100%;
+    height: 75px;
+    margin-top: 50px;
+}
+
+.findPWBtn{
+    width: 30% !important;
+    height: 45px;
+    color:#fff;
+    background-color: rgb(71, 71, 71);
+    border-radius: 10px;   
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+}
+
+.findPWBtn:hover{
+    color:black;
+    background-color: #fff;
+    
+}
+
+.findPWBtn.confirm{
+    margin-left: 61.2px;
+}
+
+.findPWBtn.cancle{
+    margin-left: 40px;
 }

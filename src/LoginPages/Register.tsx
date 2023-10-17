@@ -159,7 +159,7 @@ const Register:React.FC =()=>{
 
                     <div className='input-registerInfo phonNumber'>
                         <input type="tel" className='inputInfo phonNumber' value={phonNumberInfo} onChange={phonNumberHandle} placeholder='핸드폰 번호를 입력해주세요.'></input>
-                        <div className='errorMessageWrap emailInfo'>
+                        <div className='errorMessageWrap phonNumberInfo'>
                         <div>
                             {
                                 !phonNumberValid && 0 < phonNumberInfo.length && (

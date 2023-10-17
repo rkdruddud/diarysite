@@ -6,6 +6,7 @@ import Login from './LoginPages/Login';
 import Register from './LoginPages/Register';
 import FindID from './LoginPages/FindID';
 import FindPW from './LoginPages/FindPW';
+import ChangePW from './LoginPages/ChangePW';
 
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
@@ -22,6 +23,7 @@ root.render(
       <Route path='/Register' element={<Register/>}/>
       <Route path='/FindID' element={<FindID/>}/>
       <Route path='/FindPW' element={<FindPW/>}/>
+      <Route path='/ChangePW' element={<ChangePW/>}/>
     </Routes>
     </BrowserRouter>
     

@@ -33,15 +33,53 @@
     transform: translate(-50%,50%);
     border-radius: 10px;
     border: 5px solid #fff;
-    background-color: rgba(131, 130, 130, 0.884);
+    background-color:rgba(214, 214, 214, 0.884);
+}
+
+.findID-input-wrap{
+    position: inherit;
+    width:70%;
+    height: 80%;
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%,50%);
+    
+}
+
+.findID-input-wrap h1{
+    margin-bottom: 40px;
+    cursor: default;
+}
+
+.findIDinfo{
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.findIDinfo.name{
+
+    width: 100%;
+    height: 75px;
+    bottom: 50%;
+    transform: translate(0,50%);
+
+}
+
+.findIDinfo.phonNumber{
+    
+    width: 100%;
+    height: 75px;
+    bottom: 40%;
+    transform: translate(0,40%);
+  
+
 }
 
 .findID-input {
     position: relative;
     display: block;
-    width: 80%;
+    width: 100%;
     height: 45px;
-    margin-bottom: 10%;
     border-radius: 10px;
     font-size: 15px;
 }
@@ -50,18 +88,112 @@
     color: rgba(128, 128, 128, 0.699);
 }
 
+
 .findID-input.name{
-    position: absolute;
     left: 50%;
-    bottom: 45%;
-    transform: translate(-50%,60%);
+    transform: translate(-50%,0);
     border: 2px solid rgba(31, 30, 30, 0.685);
 }
 
 .findID-input.phonNumber{
-    position: absolute;
     left: 50%;
-    bottom: 32%;
-    transform: translate(-50%,50%);
+    transform: translate(-50%,0);
     border: 2px solid rgba(31, 30, 30, 0.685);
+}
+
+.errorMessageWrap{
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 10px;
+    color: red;
+    font-size: 15px;
+    cursor: default;
+ }
+
+.showIdInfo-wrap{
+   position: relative;
+    visibility: visible;
+    width: 100%;
+    height: 75px;
+    color: black;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: default;
+    text-align: center;
+    
+}
+
+.showIdInfo-wrap .findId-idInfoText{
+    position:absolute;
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%,50%);
+}
+
+ .hiddenIdInfo-wrap{
+    visibility: hidden;
+ }
+
+ .findId-btn-wrap{
+    display: flex;
+    width: 100%;
+    height: 75px;
+    margin-top: 20px;
+ }
+
+.findIdBtn{
+    width: 30% !important;
+    height: 45px;
+    color:#fff;
+    background-color: rgb(71, 71, 71);
+    border-radius: 10px;   
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+.findIdBtn:hover{
+    color:black;
+    background-color: #fff;
+    
+}
+
+ .findIdBtn.confirm {
+    margin-left: 61.2px;    
+ }
+
+ .findIdBtn.cancle {
+    margin-left: 40px;    
+ }
+
+ .findId-secondBtn-wrap{
+    width: 100%;
+    height: 45px;
+ }
+
+ .findId-secondBtn-wrap .findIdBtn-second.confirm{
+    position: absolute;
+    width: 30% !important;
+    height: 45px;
+    color:#fff;
+    background-color: rgb(71, 71, 71);
+    border-radius: 10px;   
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%,0);
+    cursor: pointer;
+ }
+ 
+ .findId-secondBtn-wrap .findIdBtn-second.confirm:hover{
+    color:black;
+    background-color: #fff;
+}
+
+
+.hidden-findIdBtn-wrap{
+    display: none;
 }

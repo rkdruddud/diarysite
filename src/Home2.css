@@ -37,6 +37,7 @@ div{
     z-index: 3;
 
 }
+
 /**텍스트1*/
 .text-contents-wrap{
     position: absolute;
@@ -61,9 +62,7 @@ div{
     height: 100%;
     margin: 0;
     z-index: 0;
-    background-color: rgba(0, 0, 0, 0.514);
     border-radius: 10px;
-    box-shadow: 0px -10px 158px 20px rgb(0, 0, 0);
     opacity: 0.5;
 }
 
