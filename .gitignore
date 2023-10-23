@@ -12,6 +12,8 @@
 /build
 
 # misc
+/Server/lib/db.ts
+.env
 .DS_Store
 .env.local
 .env.development.local

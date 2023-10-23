@@ -3,6 +3,7 @@ import {Link, useNavigate} from 'react-router-dom';
 import backgroundimg from '../image/backgroundimg.jpg';
 import './Register.css';
 import { url } from 'inspector';
+import axios from "axios";
 
 const Register:React.FC =()=>{
 
@@ -13,8 +14,10 @@ const Register:React.FC =()=>{
     const [pwCheckInfo, setpwCheckInfo] = useState<string>('');
     const [emailInfo, setEmailInfo] = useState<string>('');
     
-    const [checkIdDuplication, setCheckIdDuplicationInfo] = useState<string>('');
-    const [checkPassWord, setCheckIdInfo] = useState<string>('');
+    const [checkIdDuplication, setCheckIdDuplicationInfo] = useState<boolean>(false);
+    const [checkPassWord, setCheckPassWord] = useState<string>('');
+    const [checkDup, setCheckDup] = useState<boolean>(false);
+
 
     const [idValid, setIdValid] = useState<boolean>(false);
     const [pwValid, setPwValid] = useState<boolean>(false);
@@ -81,29 +84,30 @@ const Register:React.FC =()=>{
         }
     }
 
-    const duplicationCheckID = () =>{  // 아이디 중복 체크
+    const duplicationCheckID = async () =>{  // 아이디 중복 체크
     
         if(!idValid){
             alert("아이디 형식을 맞춰주세요.");
         } 
         else{
-          /*  setDivision(true);
-
-            let respons = await axios.get('http://localhost:8080/Register',{
+          
+            setCheckDup(true);
+            let respons = await axios.get('http://localhost:5000/Register/checkDuplication',{
                 params: {
-                    'id' : id
+                    'id' : idInfo
                 }
              });
              try{
-                if(respons.data[0].id === id){
+                console.log(respons.status);
+                /*if(respons.data[0].id === idInfo){
                     alert("이미 존재하는 아이디 입니다.");
-               }
+               }*/
              }
              catch(e){
-                setCheckDuplicationID(true);
-                alert("사용 가능한 아이디 입니다.");
+                setCheckIdDuplicationInfo(true);
+/*                alert("사용 가능한 아이디 입니다.");*/
              }
-           */
+          
         }
     }
         
@@ -125,7 +129,7 @@ const Register:React.FC =()=>{
                     <div className='input-registerInfo id'>
                         <div className='inputId-wrap'>
                         <input type="text" className='inputInfo id' value={idInfo} onChange={idHandle} placeholder='아이디를 3자 이상 입력해주세요.'></input>
-                    <button className='duplicationIdCheckBtn'>중복확인</button>    
+                    <button className='duplicationIdCheckBtn' onClick={duplicationCheckID}>중복확인</button>    
                         </div>
                     
                     <div className='errorMessageWrap idInfo'>

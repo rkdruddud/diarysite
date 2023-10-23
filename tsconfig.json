@@ -1,11 +1,14 @@
 {
   "compilerOptions": {
+    
     "target": "es6",
     "lib": [
       "dom",
       "dom.iterable",
-      "esnext"
+      "ESNext"
     ],
+    "rootDir": "./src",
+    "outDir": "./dist",
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -13,14 +16,18 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
+    "module": "ESNext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "allowImportingTsExtensions": true
   },
-  "include": [
-    "src"
-  ]
+  "ts-node": {
+    // Tell ts-node CLI to install the --loader automatically
+    "esm": true
+},
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
 }
