@@ -11,7 +11,7 @@ router.get('/checkDuplication',ctr.CheckDuplicationID);
 
 module.exports = router; */
 import { Router } from 'express';
-import * as ctr from '../Controll.ts';
+import * as ctr from '../Controll';
 const router = Router();
 
 router.post('/saveInfo', ctr.SaveUserInfo);

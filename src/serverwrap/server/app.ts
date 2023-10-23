@@ -3,10 +3,10 @@ import cors from 'cors';
 import path from 'path';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
-import RegisterRouter from './Routers/Register.ts';
-import LoginRouter from './Routers/Login.ts';
-import FindIDRouter from './Routers/FindID.ts';
-import FindPWRouter from './Routers/FindPW.ts';
+import RegisterRouter from './Routers/Register';
+import LoginRouter from './Routers/Login';
+import FindIDRouter from './Routers/FindID';
+import FindPWRouter from './Routers/FindPW';
 
 const app = express();
 const PORT = 5000;
