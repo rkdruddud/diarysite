@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
 import database from '../lib/db';
 import nodemailer from 'nodemailer';
+import { userInfo } from 'os';
+import dotenv from 'dotenv';
 
 /** 회원가입 정보 저장 */
 export const SaveUserInfo = (req:Request,res:Response) =>{
@@ -12,12 +14,16 @@ export const SaveUserInfo = (req:Request,res:Response) =>{
     const name = req.body.name;
     const login:number = 0;
 
-    database.query('INSERT INTO userinfo (id, name, password, email, phonNumber, login) VALUES(?,?,?,?,?,?);', [userID, name, password, email, phonNumber, login],
+    database.query('INSERT INTO user (id, name, password, email, phonNumber, login) VALUES(?,?,?,?,?,?);', [userID, name, password, email, phonNumber, login],
      function (error: Error|null, results:any, fields:any){
-        if(error) throw error;
+        if(error){
+           res.status(400).json({
+                error:error
+            })
+        }
         else {
             console.log("회원가입성공");
-            res.status(200).json({
+          res.status(200).json({
                 data: results.raws,
             })
         }
@@ -29,13 +35,13 @@ export const SaveUserInfo = (req:Request,res:Response) =>{
 /** 회원가입시 아이디 중복 체크 */
 export const CheckDuplicationID = (req:Request,res:Response) =>{
 
-    const params:string = req.params.id;
-    database.query('SELECT id FROM `userinfo` WHERE `id` = ?;'
-    ,params,(error:any, data:any)=>{
+    const userID = req.query.id;
+    database.query('SELECT id FROM `user` WHERE `id` = ?;' ,userID,(error:any, data:any)=>{
         if(!error){
             if(data){
+                console.log(data.raws);
                 res.status(200).json({
-                    data:data.raws
+                    data:data
                 });
             }
             else {
@@ -44,20 +50,23 @@ export const CheckDuplicationID = (req:Request,res:Response) =>{
         }
         
         if(error){
-            res.send(error);
+            
+            res.status(400).json({
+                error:error
+            })
+        
         }
 
     });
 }
 
 
-/**로그인 시 아이디와 비밀번호 조회  */
+/**로그인 시 아이디와 비밀번호 이름 조회  */
 export const LoinSearchID = (req:Request,res:Response)=>{
 
-    const params = req.params.id;
+    const userID = req.query.id;
 
-    database.query('SELECT id, password FROM `userinfo` WHERE `id` = ?;',params 
-    , (error:any, data:any) =>{
+    database.query('SELECT id, password, name FROM `user` WHERE `id` = ?;',userID , (error:any, data:any) =>{
 
         if(!error){
             res.status(200).json({
@@ -66,7 +75,9 @@ export const LoinSearchID = (req:Request,res:Response)=>{
         }
 
         if(error){
-            res.send(error);
+            res.status(400).json({
+                error:error
+            });
         }
     })
 }
@@ -77,17 +88,19 @@ export const ChangeLoginValue = (req:Request,res:Response)=>{
 
     const userID = req.body.id;
 
-    database.query('UPDATE `userinfo` SET `login`=? WHERE `id` = ?;', ['1',userID],
+    database.query('UPDATE `user` SET `login`=? WHERE `id` = ?;', ['1',userID],
     (error:any, data:any) =>{
         if(!error){
             console.log("로그인 성공");
             res.status(200).json({
-                data:data.raws
+                data:data
             });
 
         }
         if(error){
-            res.send(error);
+            res.status(400).json({
+                error:error
+            });
         }
     });
 }
@@ -96,7 +109,7 @@ export const ChangeLoginValue = (req:Request,res:Response)=>{
 export const ChangeLoginValueToLogout = (req:Request,res:Response)=>{
     const userID = req.body.id;
 
-    database.query('UPDATE `userinfo` SET `login`=? WHERE `id`=?;',['0',userID],
+    database.query('UPDATE `user` SET `login`=? WHERE `id`=?;',['0',userID],
     (error:any, data:any)=>{
         if(!error){
             res.status(200).json({
@@ -104,7 +117,10 @@ export const ChangeLoginValueToLogout = (req:Request,res:Response)=>{
             });
         }
         if(error){
-            res.send(error);
+            res.status(400).json({
+                error:error
+            });
+
         }
         
         
@@ -116,8 +132,8 @@ export const ChangeLoginValueToLogout = (req:Request,res:Response)=>{
 export const findID = (req:Request,res:Response) =>{
     const userName = req.query.name;
     const userPhonNumber = req.query.phonNumber;
-
-    database.query('SELECT id FROM `userinfo` WHERE `name` = ? AND `phonNumber` = ?', [userName, userPhonNumber],
+   
+    database.query('SELECT id FROM `user` WHERE `name` = ? AND `phonNumber` = ?', [userName, userPhonNumber],
      (error:any, data:any) =>{
         if(!error){
             res.status(200).json({
@@ -125,7 +141,9 @@ export const findID = (req:Request,res:Response) =>{
             });
         }
         if(error){
-            res.send(error);
+            res.status(400).json({
+                error:error
+            })
         }
     } );
 }
@@ -134,36 +152,41 @@ export const findID = (req:Request,res:Response) =>{
 /** 비밀번호 변경 위한 이메일 확인*/
 
 export const findEmailForChangePW = (req:Request,res:Response)=>{
-    const params = req.params.id;
+    const userID = req.query.id;
 
-    database.query('SELECT email FROM `userinfo` WHERE `id` =?',params,
+    database.query('SELECT email FROM `user` WHERE `id` =?',userID,
     (error:any, data:any) =>{
-        if(!error){
-            res.status(200).json({
-                data:data
-            })
-        }
-        if(error){
-            res.send(error);
-        }
-    });
-}
-
-/**비밀번호 변경 */
-
-export const ChangePW = (req:any,res:any)=>{
-    const userPW = req.body.changePW;
-    const userID = req.body.id;
-
-    database.query('UPDATE `userinfo` SET `password`=? WHERE `id` = ?;',[userPW, userID],
-    (error:any, data:any)=>{
         if(!error){
             res.status(200).json({
                 data:data
             });
         }
         if(error){
-            res.send(error);
+            res.status(400).json({
+                error:error
+            });
+        }
+    });
+}
+
+/**비밀번호 변경 */
+
+export const ChangePW = (req:Request,res:Response)=>{
+    const userPW = req.body.pw;
+    const userID = req.body.id;
+
+    database.query('UPDATE `user` SET `password`=? WHERE `id` = ?;',[userPW, userID],
+    (error:any, data:any)=>{
+        if(!error){
+            console.log('비밀번호 변경 성공');
+            res.status(200).json({
+                data:data
+            });
+        }
+        if(error){
+            res.status(400).json({
+                error:error
+            });
         }
     });
 }
@@ -171,19 +194,20 @@ export const ChangePW = (req:any,res:any)=>{
 
 /** 비밀번호 변경을 위한 인증 메일 전송 */
 export const SendEmail = async (req:Request,res:Response)=>{
-    const toAdress = req.body.emil;
+    const toAdress = req.body.email;
     const secretkey = ((Math.round(Math.random() * 1000000)) + '').padStart(6, '0');
 
     const transporter = nodemailer.createTransport({
         service:'naver',
         host:'smtp.naver.com',
-        port:465,
+        port:587,
         secure:false,
         auth:{
             user: process.env.GMAIL_ID,
             pass: process.env.GMAIL_PASSWORD
         },
     });
+
 
     try{
         const info = await transporter.sendMail({
@@ -200,6 +224,24 @@ export const SendEmail = async (req:Request,res:Response)=>{
     }
 }
 
+/**다이어리 유무 확인 */
+export const DiaryExistence = (req:Request,res:Response)=>{
 
+    const userID = req.query.id;
+    const date = req.query.date;
+    
+    database.query('SELECT id, date, text FROM `diary` WHERE `id` = ? AND `date`;',[userID,date] , (error:any, data:any) =>{
+        
+        if(!error){
+            res.status(200).json({
+                data:data
+            })
+        }
 
-
+        if(error){
+            res.status(400).json({
+                error:error
+            });
+        }
+    })
+}

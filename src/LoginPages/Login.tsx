@@ -3,7 +3,9 @@ import {Link, useNavigate} from 'react-router-dom';
 import backgroundimg from '../image/backgroundimg.jpg';
 import logoimg from '../image/logo.jpg';
 import "./Login.css";
-
+import axios from 'axios';
+import userinfo from '../Reducer/store'
+import { useDispatch } from 'react-redux'; 
 
 const Login:React.FC =()=>{
 
@@ -14,6 +16,7 @@ const Login:React.FC =()=>{
     const [idValid, setIDValid] = useState<boolean>(false);
     const [pwValid, setPWValid] = useState<boolean>(false);
 
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const idHandle = (e : React.ChangeEvent<HTMLInputElement>) => {
@@ -30,7 +33,7 @@ const Login:React.FC =()=>{
     const pwHandle = (e : React.ChangeEvent<HTMLInputElement>) => {
         setPW(e.target.value); 
         
-        const regex =  /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,50}$/;
+        const regex =  /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{7,50}$/;
         
         if(regex.test(pw)){
             setPWValid(true);
@@ -41,6 +44,54 @@ const Login:React.FC =()=>{
 
     const moveBackPage = () =>{
         navigate(-1);
+    }
+
+    const changeLoginValue = () =>{
+      try{
+        axios.post('http://localhost:5000/Login/SuccesLogin',{
+            id:id
+             });
+             return true;
+      }
+        catch(e){
+            return false;
+        }
+    }
+
+    const loginBtnClick = async () =>{
+        if(id.length === 0){
+            alert("아이디를 입력해주세요.");
+        }
+        else if(pw.length === 0){
+            alert("비밀번호를 입력해주세요.");
+        }
+       else if(!idValid || !pwValid){
+            alert("아이디와 비밀번호를 제대로 입력해주세요.");
+        }
+        else{
+            let respons = await axios.get('http://localhost:5000/Login/LoginSearchInfo',{
+                params:{
+                 'id': id
+                } 
+              });
+            console.log(respons);
+              if(respons.data.data[0].id === id && respons.data.data[0].password === pw){
+                
+                if(changeLoginValue()){
+                    dispatch(userinfo.actions.storeUserInfo({userID:id,userName:respons.data.data[0].name,userScore:0}));
+                    navigate('/UserHome');
+                }else{
+                    alert('로그인 중 오류 발생');
+                }
+                
+                
+              }else{
+                alert('아이디와 비밀번호가 회원 정보와 일치하지 않습니다.');
+              }
+
+        }
+            
+
     }
 
     return (
@@ -86,7 +137,7 @@ const Login:React.FC =()=>{
                         <span><Link to="/FindID" className='etc-link'>ID찾기</Link></span>           
                         <span><Link to="/FindPW" className='etc-link'>비밀번호 찾기</Link></span>           
                     </div>
-                    <button className='login-button'>로그인</button>
+                    <button className='login-button' onClick={loginBtnClick}>로그인</button>
                 </div>
 
             </div>

@@ -15,17 +15,21 @@ const Register:React.FC =()=>{
     const [emailInfo, setEmailInfo] = useState<string>('');
     
     const [checkIdDuplication, setCheckIdDuplicationInfo] = useState<boolean>(false);
-    const [checkPassWord, setCheckPassWord] = useState<string>('');
     const [checkDup, setCheckDup] = useState<boolean>(false);
 
 
     const [idValid, setIdValid] = useState<boolean>(false);
     const [pwValid, setPwValid] = useState<boolean>(false);
-    const [pwCheckValid, setPwCheckValid] = useState<boolean>(false);
     const [emailValid, setEmailValid] = useState<boolean>(false);
     const [phonNumberValid, setPhonNumberValid] = useState<boolean>(false);
 
     const navigate = useNavigate();
+
+    const nameHandle = (e:React.ChangeEvent<HTMLInputElement>) =>{
+        setNameInfo(e.target.value); 
+        
+    }
+
 
     const idHandle = (e:React.ChangeEvent<HTMLInputElement>) =>{
         setIdInfo(e.target.value); 
@@ -40,7 +44,7 @@ const Register:React.FC =()=>{
     const pwHandle = (e:React.ChangeEvent<HTMLInputElement>) =>{
         setPwInfo(e.target.value); 
         
-        const regex =  /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,50}$/;
+        const regex =  /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{7,50}$/;
         
         if(regex.test(pwInfo)){
             setPwValid(true);
@@ -52,11 +56,6 @@ const Register:React.FC =()=>{
     const pwCheckHandle = (e:React.ChangeEvent<HTMLInputElement>) =>{
         setpwCheckInfo(e.target.value); 
         
-        if(pwCheckInfo === pwInfo){
-            setPwCheckValid(true);
-        }else{
-            setPwCheckValid(false);
-        }
     }
 
 
@@ -98,19 +97,75 @@ const Register:React.FC =()=>{
                 }
              });
              try{
-                console.log(respons.status);
-                /*if(respons.data[0].id === idInfo){
+                //여기선 respons.data.data[0] 에서 찾아야함.
+                if(respons.data.data[0].id === idInfo){
                     alert("이미 존재하는 아이디 입니다.");
-               }*/
+               }
              }
              catch(e){
                 setCheckIdDuplicationInfo(true);
-/*                alert("사용 가능한 아이디 입니다.");*/
+               alert("사용 가능한 아이디 입니다.");
              }
           
         }
     }
         
+    const regsiterUser = () =>{
+ 
+        if(nameInfo.length === 0){
+            alert('이름을 입력해주세요.');
+        }
+
+       else if(idInfo.length === 0 || !idValid){
+            alert('아이디를 입력해주세요.');
+        }
+        
+       else if(!checkIdDuplication || checkDup === false){
+            alert('아이디 중복확인을 해주세요.');
+        }
+
+        else if(pwInfo.length === 0 || !pwValid){
+            alert('비밀번호를 입력해주세요.');
+        }
+
+        else if(pwCheckInfo.length === 0 || pwCheckInfo != pwInfo){
+            alert('비밀번호가 일치하지 않습니다.');
+        }
+
+        else if(phonNumberInfo.length === 0){
+            alert('핸드폰 번호를 입력해주세요.');
+        }
+
+        else if(!phonNumberValid){
+            alert('핸드폰 번호를 올바르게 입력해주세요.');
+        }
+
+        else if(emailInfo.length === 0){
+            alert('이메일을 입력해주세요.');
+        }
+
+        else if(!emailValid){
+            alert('올바른 이메일을 입력해주세요.');
+        }
+
+        else{
+            if(pwInfo === pwCheckInfo){
+                axios.post('http://localhost:5000/Register/saveInfo',{
+                    id : idInfo,
+                    name : nameInfo,
+                    pw : pwInfo,
+                    email : emailInfo,
+                    phonNumber : phonNumberInfo
+        
+                });
+                alert("회원가입 성공");
+                navigate(-1);
+            }
+            else {
+                alert('비밀번호가 일치하지 않습니다.');
+            }
+        } 
+    }
       
 
 
@@ -122,7 +177,7 @@ const Register:React.FC =()=>{
                     <div className='register-input-wrap'>
                     <h1>회원가입</h1>
                     <div className='input-registerInfo name'>
-                    <input type='text' className='inputInfo name' placeholder='이름을 입력해주세요.'></input>
+                    <input type='text' className='inputInfo name'value={nameInfo} onChange={nameHandle} placeholder='이름을 입력해주세요.'></input>
                     </div>
                     
 
@@ -190,7 +245,7 @@ const Register:React.FC =()=>{
                     </div>
 
                     <div className='register-button-wrap'>
-                            <button className='registerBtn confirm' onClick={()=>{navigate(-1);}}>확인</button>
+                            <button className='registerBtn confirm' onClick={regsiterUser}>확인</button>
                             <button className='registerBtn cancle' onClick={()=>{navigate(-1);}}>취소</button>
                     </div>
 

@@ -1,0 +1,181 @@
+body{
+    margin: 0;
+}
+div{
+    display: block;
+}
+.userHome-contents {
+    position:relative;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    object-fit: cover;
+    perspective: 500px;
+}
+
+.userHome-wrap{
+    position:relative;
+    width: 100vw;
+    height: 100vh;
+    perspective: 800px;
+}
+
+.userHome-inner-wrap{
+    position:absolute;
+    display: block;
+    width: 90vw;
+    height: 100vh;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+    
+    
+}
+
+.userHome-inner-wrap.title{
+    width: 100%;
+    height: 15%;
+    
+    justify-items: center;
+}
+
+.userHome-inner-wrap .userHome-titleWrap{
+    position: absolute;
+    width: 50%;
+    height: 60px;
+    left: 50%;
+    bottom: 20%;
+    transform: translate(-50%,20%);
+    text-align: center;
+    
+    
+}
+
+.userHome-inner-wrap.title h1{
+    margin: 0;
+    font-size: 40px;
+    color: #fff;
+}
+
+
+.userHome-inner-wrap.calendarWrap {
+ 
+    width: 100%;
+    height: 85%;
+    top:15%;
+    
+   
+}
+
+.userHome-inner{
+    position: absolute;
+    display: flex;
+    width: 80%;
+    height: 100%;
+    left: 50%;
+    transform: translate(-50%);
+    align-items: center;
+    perspective: 500px;
+}
+
+.userHome-inner .calendar-wrap{
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: none;
+    
+}
+
+.calendar{
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    
+}
+
+.userInfo-wrap{
+    position: absolute;
+    width: 200px;
+    height: 30%;
+    margin-left: 15px;
+    margin-top: 130px;
+    border-radius: 40px;
+    border: 5px solid #d3d2d2ed;
+    background-color: black;
+    visibility: visible;
+    
+}
+
+.userInfo-inner{
+    display: grid;
+    width: 100%;
+    height: 50px;
+    justify-items: center;
+   
+}
+
+.userInfo-inner.name{
+    margin-top: 30px;
+}
+
+.userInfo-inner .userInfo{
+    width: auto;
+    height: 40px;
+    font-size: 20px;
+    color: #fff;
+    cursor: default;
+}
+
+.userInfo-inner.point{
+    
+}
+
+
+.userInfo-inner.logout{
+    margin-top: 10px;
+    
+}
+
+.logoutBtn{
+    margin-top: 5px;
+    width: 120px;
+    height: 40px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    color: #fff;
+    background-color: black;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+.logoutBtn:hover{
+    
+    border: 2px solid #fff;
+    color: black;
+    background-color:#fff;
+    
+}
+
+.hidden-wrap {
+    
+    visibility: hidden;
+    
+}
+
+.userIcon-wrap{
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    margin-top:50px;
+    margin-left : 90px;
+    border-radius: 150%;
+
+}
+
+.userIcon-wrap:hover{
+    background-color: gray;
+}
