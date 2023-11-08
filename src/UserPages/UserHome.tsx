@@ -49,27 +49,27 @@ const UserHome:React.FC = ()=>{
         onChange(selectDate);
         setClickDate(moment(selectDate).format("YYYY년 MM월 DD일"));
        const date = moment(selectDate).format("YYYY년 MM월 DD일");
+       
         try{
-            console.log(date);
+           
             let respons = await axios.get('http://localhost:5000/UserHome/diaryexistence',{
                 params: {
                   'id' : userID,
                   'date': date
                 }      
                   });
-                  console.log(respons.data);
+                  console.log(respons.data.data[0].date);
                   if(respons.data.data[0].date === date){
                             
                     dispatch(dateinfo.actions.storeDateInfo({date:date, text:respons.data.data[0].text}));
                     navigate('/UserDiary');  
                 }
-                  else{
-                    navigate('/CreateDiary');
-                } 
+             
 
         }
         catch(e){
-            console.log("에러발생");
+            dispatch(dateinfo.actions.storeDateInfo({date:date}));
+            navigate('/CreateDiary');
         }
     }
 

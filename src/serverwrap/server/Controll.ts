@@ -230,7 +230,7 @@ export const DiaryExistence = (req:Request,res:Response)=>{
     const userID = req.query.id;
     const date = req.query.date;
     
-    database.query('SELECT id, date, text FROM `diary` WHERE `id` = ? AND `date`;',[userID,date] , (error:any, data:any) =>{
+    database.query('SELECT id, date, text FROM `diary` WHERE `id` = ? AND `date` = ?;',[userID,date] , (error:any, data:any) =>{
         
         if(!error){
             res.status(200).json({
@@ -244,4 +244,88 @@ export const DiaryExistence = (req:Request,res:Response)=>{
             });
         }
     })
+}
+
+/**다이어리 수정 업데이트*/
+
+export const DiaryUpdateText  = (req:Request,res:Response)=>{
+    const userID = req.body.id;
+    const text = req.body.text;
+    const date = req.body.date;
+
+    database.query('UPDATE `diary` SET `text`=? WHERE `id`=? AND `date`=?;',[text,userID,date],
+    (error:any, data:any)=>{
+        if(!error){
+            res.status(200).json({
+                data:data
+            });
+        }
+        if(error){
+            res.status(404).json({
+                error:error
+            });
+
+        }
+        
+        
+    });
+}
+
+/**다이어리 작성 내용 저장 */
+export const CreateDiary = (req:Request,res:Response) =>{
+
+    const userID = req.body.id;
+    const text = req.body.text;
+    const score = req.body.score;
+    const date = req.body.date;
+    const image = req.body.image;
+
+    console.log(userID);
+    console.log(text);
+    console.log(date);
+    console.log(image);
+    console.log(score);
+
+    database.query('INSERT INTO diary (id, date, text, image) VALUES(?,?,?,?);', [userID, date, text, image],
+     function (error: Error|null, results:any, fields:any){
+        if(error){
+            console.log(error);
+           res.status(400).json({
+                error:error
+            })
+        }
+        else {
+          
+          res.status(200).json({
+                data: results.raws,
+            })
+        }
+
+    });
+
+}
+
+/**다이어리 삭제 */
+export const DeleteDiary = (req:Request,res:Response) =>{
+
+    const userID = req.body.id;
+    const date = req.body.date;
+
+    database.query('DELETE FROM diary WHERE `id` = ? AND `date`=?;', [userID, date],
+     function (error: Error|null, results:any, fields:any){
+        if(error){
+            console.log(error);
+           res.status(400).json({
+                error:error
+            })
+        }
+        else {
+          
+          res.status(200).json({
+                data: results.raws,
+            })
+        }
+
+    });
+
 }

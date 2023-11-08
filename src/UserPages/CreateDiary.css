@@ -1,0 +1,275 @@
+
+.createDiary-contents{
+    width: 100vw;
+    height: 100vh;
+    padding:0;
+    background-color: black;
+   object-fit: cover;
+}
+
+.creatDiary-wrap{
+    position: relative;
+    width: 75%;
+    height: 100%;
+    margin: 0 auto;
+    
+}
+
+.createDiary-title-wrap{
+    position: inherit;
+    width: 100%;
+    height: 100px;
+    align-items: center;
+    
+    
+}
+
+.createDiary-title-wrap .createDiary-title{
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%,50%);
+    width: 400px;
+    height: 50px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 800;
+    color:#fff;
+    
+}
+
+
+.createDiaryInfo-wrap{
+    display: flex;
+    width: 100%;
+    height: 80%;
+}
+
+
+.createDiaryImg-wrap{
+    position: relative;
+    display: flex;
+    width: 100%;
+    min-width: 500px;
+    max-width: 100%;
+    height: 100%;
+    min-height: 500px;
+    max-height: 100%;
+    align-items: center;
+    background-color: #fff;
+    
+}
+
+.createDiary-date-wrap{
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    top: 0;
+    align-items: center;
+    background-color: #fff;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.33);
+}
+
+.createDiary-date-wrap .createDiary-date{
+    position: absolute;
+    left: 50%;
+    bottom: 10%;
+    transform: translate(-50%,10%);
+    width: 400px;
+    height: 30px;
+    text-align: center;
+    line-height: 2;
+    font-size: 15px;
+    cursor: default;
+    color:black;
+    
+}
+
+.goHomeBtn-wrap{
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    width: 140px;
+    height: 50px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    
+}
+
+
+.goHomeBtn-wrap p{
+    width: 100px;
+    font-size: 15px;
+    margin-left: 10px;
+    font-weight: 800;
+}
+
+.home-logo{
+    width: 60px;
+    height: 50px;
+}
+
+.createDiaryImg-inner{
+    width: 95%;
+    height: 80%;
+    margin: 0 auto;
+}
+
+.fileUploadImg-wrap{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.fileUploadImg-wrap .fileLable{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color:rgba(28, 97, 235, 0.713);
+    border: 2px solid rgba(177, 177, 177, 0.474);
+    cursor: pointer;
+    z-index: 1;
+}
+
+.preshowImg{
+    position: absolute;
+   display: block;
+   width: 100%;
+   height: 100%;
+     object-fit: cover;
+    z-index: 0;
+    
+}
+
+.hidden-preshowimg{
+    display: none;
+}
+
+.fileLable-inner{
+    margin: 0 auto;
+    width: 150px;
+    height: 155px;
+}
+
+
+
+.fileLable img{
+    width: 100px;
+    height: 100px;
+    margin-left:25px;
+    transform: translate(0);
+    opacity: 0.5;
+}
+
+.fileLable .ImgText{
+    font-size: larger;
+    font-weight: 800;
+    width: 120px;
+    color: black;
+    opacity: 0.5;
+    margin-top: 10px;
+    margin-left: 21px;
+}
+
+.createDiaryText-wrap{
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    min-width: 500px;
+    max-width: 100%;
+    min-height: 500px;
+    max-height: 100%;
+    background-color: #fff;
+    border-left: 2px solid rgba(0, 0, 0, 0.189);
+    align-items: center;
+}
+
+.createDiaryText-inner{
+   
+    position: relative;
+    display: block;
+    width: 95%;
+    height: 85%;
+    margin: 0 auto;
+    
+}
+
+.createDiaryText-inner .textCout-wrap{
+    position: absolute;
+    width: auto;
+    height: 20px;
+    margin: 0 !important;
+    bottom: 0;
+    left: 5px;
+   
+    
+}
+.createDiaryText-inner span{
+    font-size: 15px;
+   
+}
+.createDiaryText-inner .hiddenTextCount-wrap{
+    visibility: hidden;
+}
+
+
+.createDiaryText{ 
+    position: absolute;
+    width: 95%;
+    height: 90%;
+    border: 1px solid #cbcbcb8f;
+    padding: 10px;
+    top:0;
+    line-height: 1.5;
+    resize: none;
+    overflow-y: scroll;
+    
+}
+
+.createDiaryText::-webkit-scrollbar{
+  display: none;
+}
+
+.createDiaryText:focus{
+    
+  outline-color: #cbcbcb8f;
+}
+
+.createDiaryBtn-wrap{
+    position: absolute;
+    width: 120px;
+    height: 40px;
+    display: flex;
+    margin: 0 auto;
+    bottom: 20px;
+    right: 0;
+    align-items: center;
+
+}
+
+.createDiaryBtn{
+    width: 80px;
+    height: 40px;
+    margin-left: 15px;
+    border-radius: 10px;
+    border: 1px solid #fff;
+    background-color: rgba(0, 0, 0, 0.304);
+    color: #fff;
+    cursor:pointer;
+}
+
+.createDiaryBtn:hover{
+    background-color: black;
+}
+
+.createbutton-wrap{
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    bottom: 0;
+    
+}

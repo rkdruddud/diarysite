@@ -25,7 +25,7 @@ const UserDiary = () =>{
     const [updateBtnValue, setUpdateBtnValue] = useState<string>('수정');
     const [textCount, setTextCount] = useState<number>(0);
     const [hiddenTextCount, setHiddenTextCount] = useState<string>('hiddenTextCount-wrap');
-
+    const [hiddenBtn, setHiddenBtn] = useState<string>('diaryBtn delete');
     useEffect(()=>{
         setText(diaryText);
          setTextCount(diaryText.length);
@@ -35,13 +35,22 @@ const UserDiary = () =>{
         if(updateBtnValue === '수정'){
             setReadOnly(false);
             setHiddenTextCount('textCout-wrap');
+            setHiddenBtn('hiddenBtn');
             setUpdateBtnValue('완료');
            
         }
         else{
             setReadOnly(true);
             setHiddenTextCount('hiddenTextCount-wrap');
+            setHiddenBtn('diaryBtn delete');
             setUpdateBtnValue('수정');
+            
+            axios.post('http://localhost:5000/UserHome/diaryUpdateText',{
+                id:userID,
+                text:text,
+                date:diaryDate
+                 });
+                 
         }
         
     }
@@ -57,25 +66,52 @@ const UserDiary = () =>{
     }
 
 
+    const deleteHandle = () =>{
+       
+        if(window.confirm("정말 삭제하시겠습니까?")){
+            try{
+                axios.post('http://localhost:5000/UserHome/deletediary',{
+                    id:userID,
+                    date:diaryDate
+                });
+                alert("삭제되었습니다.");
+                navigate(-1);
+                }
+                catch(e){
+                    alert(e);
+                }
+        }
+
+        else {
+             alert("취소되었습니다.");
+        }       
+    }
+
 
     return(
         <div className='userDiary-contents'>
         <div className='userDiary-wrap'>
-            <div className='diary-date-wrap'>
-                <div className='diary-date'>{diaryDate}</div>
+            <div className='diary-title-wrap'>
+                <div className='diary-title'>My diary</div>
             </div>
             <div className='diaryInfo-wrap'>
 
             <div className='diaryImg-wrap'>
                 
-                <div className='goHomeBtn-wrap'  onClick={moveBackPage}>
-                <img className='home-logo' src={logo}></img>
-                <p>돌아가기</p>
-                </div>
+            <div className='diary-date-wrap'>
+                <div className='diary-date'>{diaryDate}</div>
+            </div>
+             
                 
                 <div className='diaryImg-inner'>
 
                 </div>
+
+                <div className='goHomeBtn-wrap'  onClick={moveBackPage}>
+                <img className='home-logo' src={logo}></img>
+                <p>돌아가기</p>
+                </div>
+
             </div>
             <div className='diaryText-wrap'>
                 <div className='diaryText-inner'>
@@ -89,6 +125,7 @@ const UserDiary = () =>{
                
                     <div className='button-wrap'>
                     <button className='diaryBtn update' onClick={updateHandle}>{updateBtnValue}</button>
+                    <button className={hiddenBtn} onClick={deleteHandle}>삭제</button>
                     </div>
                     
                     
