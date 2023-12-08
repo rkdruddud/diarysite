@@ -10,8 +10,15 @@ import UserHome from './UserPages/UserHome';
 import UserDiary from './UserPages/UserDiary';
 import CreateDiary from './UserPages/CreateDiary';
 import { Provider } from 'react-redux';
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import store from './Types/config'
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import store from './Types/config';
+
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+
+const client = new ApolloClient({
+  uri: "http://localhost:5000/graphql",
+  cache: new InMemoryCache(),
+});
 
 
 const root = ReactDOM.createRoot(
@@ -20,6 +27,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+    <ApolloProvider client={client}>
     <Provider store={store}>
     <Routes>
       <Route path='/' element={<Home2/>}/>
@@ -34,6 +42,7 @@ root.render(
     </Routes>
     
     </Provider>
+    </ApolloProvider>
     </BrowserRouter>
     
   </React.StrictMode>

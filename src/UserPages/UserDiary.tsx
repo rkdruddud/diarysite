@@ -10,7 +10,11 @@ import userinfo from '../Reducer/store';
 import dateinfo from '../Reducer/dateStrore';
 import axios from "axios";
 
+import AWS from 'aws-sdk';
+
 const UserDiary = () =>{
+    
+    
     
     const dispatch = useDispatch();
     const userName = useSelector<RootState,string>((state)=>state.storeUserInfo.userName);
@@ -26,17 +30,69 @@ const UserDiary = () =>{
     const [textCount, setTextCount] = useState<number>(0);
     const [hiddenTextCount, setHiddenTextCount] = useState<string>('hiddenTextCount-wrap');
     const [hiddenBtn, setHiddenBtn] = useState<string>('diaryBtn delete');
+   
+    const [diaryImg, setDiaryImg] = useState<string>("");
+
+   
+    const S3 = new AWS.S3();
+    
+
     useEffect(()=>{
         setText(diaryText);
          setTextCount(diaryText.length);
+         serchDiaryImageFile();
+       
     },[]);
 
+    /** S3 버킷에서 해당 날짜 이미지 불러오는 함수 */
+    const loadImageFile = async (diayImgFileName:string) =>{
+       
+        try{
+            const response = await S3.getObject({
+                Bucket : "diaryqeststore",
+                Key:`${userID}/${diayImgFileName}`,
+            }).promise();
+           
+          if(response.Body !== undefined){
+            const blob = new Blob([response.Body as BlobPart]);
+            const urlCreator = window.URL || window.webkitURL;
+            const imageUrl = urlCreator.createObjectURL(blob);
+            setDiaryImg(imageUrl);  
+        }
+        }
+        catch(e){
+            console.log(e);
+        }
+    }
+
+    /** 일기 사진 DB에서 조회 함수 */
+    const serchDiaryImageFile = async() =>{
+       
+        try{
+           
+            let respons = await axios.get('http://localhost:5000/UserHome/diaryImageFileSearch',{
+                params: {
+                  'id' : userID,
+                  'date': diaryDate
+                }      
+                  });
+                  
+                  loadImageFile(respons.data.data[0].date);
+                  console.log(respons.data.data[0].date);
+        }
+        catch(e){
+            alert("이미지 파일이 없습니다."); // 이미지가 없는 경우엔 빈칸으로 띄워주는 코드 작성해야함.
+        }
+    }
+
+    /** 일기 업데이트 함수 */
     const updateHandle =()=>{
         if(updateBtnValue === '수정'){
             setReadOnly(false);
             setHiddenTextCount('textCout-wrap');
             setHiddenBtn('hiddenBtn');
             setUpdateBtnValue('완료');
+            
            
         }
         else{
@@ -62,10 +118,10 @@ const UserDiary = () =>{
     const textareaUpdateHandle = (e:React.ChangeEvent<HTMLTextAreaElement>) =>{
         setText(e.target.value);
         setTextCount(e.target.value.replace(/[\0-\x7f]|([0-\u07ff]|(.))/g, "$&$1$2").length);
-        console.log()
+        
     }
 
-
+    /** 일기 삭제 함수 */
     const deleteHandle = () =>{
        
         if(window.confirm("정말 삭제하시겠습니까?")){
@@ -104,7 +160,7 @@ const UserDiary = () =>{
              
                 
                 <div className='diaryImg-inner'>
-
+                    <img src={diaryImg}></img>
                 </div>
 
                 <div className='goHomeBtn-wrap'  onClick={moveBackPage}>

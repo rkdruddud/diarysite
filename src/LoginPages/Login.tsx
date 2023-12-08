@@ -74,7 +74,6 @@ const Login:React.FC =()=>{
                  'id': id
                 } 
               });
-            console.log(respons);
               if(respons.data.data[0].id === id && respons.data.data[0].password === pw){
                 
                 if(changeLoginValue()){

@@ -6,5 +6,6 @@ router.get('/diaryexistence',ctr.DiaryExistence);
 router.post('/diaryUpdateText', ctr.DiaryUpdateText);
 router.post('/creatediary',ctr.CreateDiary);
 router.post('/deletediary',ctr.DeleteDiary);
+router.get('/diaryImageFileSearch',ctr.DiaryImageFileSearch);
 
 export default router;

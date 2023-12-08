@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes, useEffect, useState,useRef } from 'react';
+import  React, { InputHTMLAttributes, useEffect, useState,useRef } from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import backgroundimg from '../image/backgroundimg.jpg';
 import galleryImg from '../image/gallery.jpg';
@@ -11,30 +11,11 @@ import userinfo from '../Reducer/store';
 import dateinfo from '../Reducer/dateStrore';
 import axios from "axios";
 
-import {useMutation } from '@apollo/client';
+import AWS from "aws-sdk";
 
-import { UPLOAD_IMG } from '../serverwrap/graphQL/ShareSceema';
-
-
-/**apolloclient */
-/*const client = new ApolloClient({
-   
-      uri: 'http://localhost:5000/graphql', 
-    cache: new InMemoryCache()
-  });
-  */
-
-
-
+  
 const CreateDiary:React.FC = () =>{
     
-    interface FileData {
-        lastModified: number;
-        name: string;
-        size: number;
-        type: string;
-    }
-
 
     const dispatch = useDispatch();
     const userName = useSelector<RootState,string>((state)=>state.storeUserInfo.userName);
@@ -44,46 +25,93 @@ const CreateDiary:React.FC = () =>{
     
     const imgRef = useRef();
     const navigate = useNavigate();
-    const [uploadIMG] = useMutation(UPLOAD_IMG);
-
 
     const [imgBaseURL, setImgBaseURL] = useState<string>("");
     const [changeImgText, setChangeImgText] = useState<string>("이미지 추가");
     const [preshowImgValid, setPreshowImgValid] = useState<string>("hidden-preshowimg")
-    const [imgURL, setImgURL] = useState<FileData | null>(null);
+    const [imgURL, setImgURL] = useState<File | null>(null);
     const [text, setText] = useState<string>('');
     const [textCount, setTextCount] = useState<number>(0);
     const [imageKey, setImageKey] = useState<string>("");
 
+    const formData = new FormData();
 
+    /** 이미지 파일인지 확인 */
+    const isImage = (file: File) => {
+        return file.type.startsWith('image/');
+      };
+
+      /** 업로드할 파일 확인후 업로드 */
+    const uploadImgFile = async () =>{
+
+        if (!imgURL || !diaryDate || !userID) {
+            console.error('파일 업로드 실패');
+            return;
+        }
+
+        if (!isImage(imgURL)) {
+            console.error('업로드된 파일이 이미지가 아닙니다.');
+            return;
+        }
  
+         try {
+               buketUpload(formData);
+             } catch (error) {
+                console.error('Error uploading file:', error);
+             }
+    }
+
+/**s3 버킷에 이미지 업로드 함수 */
+    const buketUpload = (formData:any) =>{
+      const REGION = process.env.REACT_APP_REGION;
+      const ACCESS_KEY_ID= process.env.REACT_APP_ACCESS_KEY_ID;
+      const SECRET_ACCESS_KEY_ID = process.env.REACT_APP_SECRET_ACCESS_KEY_ID;
+    
+    AWS.config.update({
+      region:REGION,
+      accessKeyId:ACCESS_KEY_ID,
+      secretAccessKey:SECRET_ACCESS_KEY_ID,
+    })
+    
+    if(imgURL !== null){
+        
+        const upload = new AWS.S3.ManagedUpload({
+            params: {
+                ACL: 'public-read',
+                Bucket: 'diaryqeststore',
+                Key: `${userID}/${imageKey}`,
+                Body: imgURL,
+                
+            }
+
+        });
+        try{
+            
+            upload.promise();
+            console.log("버킷에 업로드 됨");        
+        }catch(e){
+            console.log(e);
+        }
+        
+    }
+    
+    }
 
 
     /** 일기 생성버튼 클릭 이벤트 함수*/
-    const createHandle = async()=>{
+    const createHandle = ()=>{
             console.log(userID);
            
             if(userID === ""){
                 alert("로그 아웃 되었습니다. 다시 로그인 해주세요.");
                 navigate(-2);
             }else{
-
-                const url : string|undefined = imgURL?.name;
-              
-               
-                    try{
-                        console.log(url);
-                        const { data } = await uploadIMG({variables: { userID, diaryDate, url, imgURL }});
-                        console.log("파일업로드 성공 :",data.singleUpload);
-                    }catch(e){
-                        console.log(e);
-                    }
-               
+                
                 try{
-
+                    if(imgURL !== null){
+                        uploadImgFile();
                     
-
-                    axios.post('http://localhost:5000/UserHome/creatediary',{
+                  axios.post('http://localhost:5000/UserHome/creatediary',{
                         id:userID,
                         text:text,
                         date:diaryDate,
@@ -92,6 +120,10 @@ const CreateDiary:React.FC = () =>{
                          });
                          alert("저장 완료");
                          navigate(-1);
+                        }
+                         else{
+                            alert("업로드 실패");
+                        }
                 }
                 catch(e){
                     alert(e);
@@ -109,29 +141,42 @@ const CreateDiary:React.FC = () =>{
         setText(e.target.value);
         setTextCount(e.target.value.replace(/[\0-\x7f]|([0-\u07ff]|(.))/g, "$&$1$2").length);
     }
+
     /** 업로드 이미지 미리보기 기능 제공 */
-    const uploadImgShowHandle = (e:React.ChangeEvent<HTMLInputElement>) =>{
+    const uploadImgShowHandle = async (e:React.ChangeEvent<HTMLInputElement>) =>{
       
         let reader = new FileReader();
       
-        reader.onloadend = () =>{
+        const files = e.target.files;
+        if(files && files.length === 1){
 
-            const base64 = reader.result;
-            if (base64) {
-                setImgBaseURL(base64.toString()); // 파일 base64 상태 업데이트
-                setPreshowImgValid('preshowImg');
-                setChangeImgText("이미지 변경");
+            const file = files[0];
+
+            reader.onloadend = () =>{
+
+                const base64 = reader.result;
+                if (base64) {
+                    setImgBaseURL(base64.toString()); // 파일 base64 상태 업데이트
+                    setPreshowImgValid('preshowImg');
+                    setChangeImgText("이미지 변경");
+                    console.log(file.name);
+                }
+           }
+             if(files !== null){
+                reader.readAsDataURL(file);
+                
+                formData.append('file',file);
+                formData.append('name',userID+diaryDate+file.name);
+                
+                setImageKey(userID+diaryDate+file.name);
+                setImgURL(file);
                
             }
-      
-           
-       }
-         if(e.target.files !== null){
-            reader.readAsDataURL(e.target.files[0]);
-            
-            setImageKey(userID+diaryDate+e.target.files[0].name);
-            setImgURL(e.target.files[0]);
         }
+        
+
+
+
     }
 
 

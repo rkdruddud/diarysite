@@ -118,6 +118,12 @@
     background-color: red;
 }
 
+.diaryImg-inner img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .diaryText-wrap{
     position: relative;
     display: flex;

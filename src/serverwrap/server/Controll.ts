@@ -329,3 +329,24 @@ export const DeleteDiary = (req:Request,res:Response) =>{
     });
 
 }
+
+export const DiaryImageFileSearch = (req:Request,res:Response)=>{
+
+    const userID = req.query.id;
+    const date = req.query.date;
+    
+    database.query('SELECT image FROM `diary` WHERE `id` = ? AND `date` = ?;',[userID,date] , (error:any, data:any) =>{
+        
+        if(!error){
+            res.status(200).json({
+                data:data
+            })
+        }
+
+        if(error){
+            res.status(400).json({
+                error:error
+            });
+        }
+    })
+}
