@@ -81,7 +81,7 @@ div{
 
 .userHome-inner .calendar-wrap{
     position: absolute;
-    width: 90%;
+    width: 70%;
     height: 90%;
     left: 50%;
     transform: translate(-50%);
@@ -99,7 +99,7 @@ div{
 .userInfo-wrap{
     position: absolute;
     width: 200px;
-    height: 30%;
+    height: 250px;
     margin-left: 15px;
     margin-top: 130px;
     border-radius: 40px;
@@ -129,6 +129,19 @@ div{
     cursor: default;
 }
 
+.userInfo-inner .showAllpage{
+    
+    width: auto;
+    height: 40px;
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
 .userInfo-inner.point{
     
 }
@@ -140,7 +153,7 @@ div{
 }
 
 .logoutBtn{
-    margin-top: 5px;
+    
     width: 120px;
     height: 40px;
     border: 2px solid #fff;
@@ -178,4 +191,41 @@ div{
 
 .userIcon-wrap:hover{
     background-color: gray;
+}
+
+
+.mark {    
+    position: relative;
+    display: inline-block;
+    left: 1px;
+    width: 0px;
+    height: 0px;
+    margin: 2vh 0;
+    color: #ffd67a;    
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-bottom: 7px  solid #ffd67a;    
+    transform: rotate(36deg);
+}
+    
+.mark::before,
+.mark::after{
+    content: "";
+    position: absolute;
+    width: 0px;
+    top: 0;
+    height: 0px;
+    color: #ffd67a;    
+    left: -10px;        
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-bottom: 7px solid #ffd67a;
+}
+    
+.mark::before {
+    transform: rotate(71deg);
+}
+    
+.mark::after {
+    transform: rotate(-71deg);
 }

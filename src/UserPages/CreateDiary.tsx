@@ -159,7 +159,6 @@ const CreateDiary:React.FC = () =>{
                     setImgBaseURL(base64.toString()); // 파일 base64 상태 업데이트
                     setPreshowImgValid('preshowImg');
                     setChangeImgText("이미지 변경");
-                    console.log(file.name);
                 }
            }
              if(files !== null){

@@ -12,7 +12,7 @@ import axios from "axios";
 
 import AWS from 'aws-sdk';
 
-const UserDiary = () =>{
+const UserDiary:React.FC = () =>{
     
     
     
@@ -33,6 +33,7 @@ const UserDiary = () =>{
    
     const [diaryImg, setDiaryImg] = useState<string>("");
 
+    const [s3ImageName, setS3ImageName] = useState<string>("");
    
     const S3 = new AWS.S3();
     
@@ -41,23 +42,25 @@ const UserDiary = () =>{
         setText(diaryText);
          setTextCount(diaryText.length);
          serchDiaryImageFile();
+        
        
     },[]);
 
     /** S3 버킷에서 해당 날짜 이미지 불러오는 함수 */
     const loadImageFile = async (diayImgFileName:string) =>{
        
-        try{
+       try{
             const response = await S3.getObject({
                 Bucket : "diaryqeststore",
                 Key:`${userID}/${diayImgFileName}`,
             }).promise();
-           
+          
           if(response.Body !== undefined){
             const blob = new Blob([response.Body as BlobPart]);
             const urlCreator = window.URL || window.webkitURL;
             const imageUrl = urlCreator.createObjectURL(blob);
             setDiaryImg(imageUrl);  
+            return;
         }
         }
         catch(e){
@@ -65,10 +68,25 @@ const UserDiary = () =>{
         }
     }
 
+    /** S3 버킷의 이미지 객체 삭제 함수 */
+    const deleteImageFileS3 = async () =>{
+        try{
+            const response = await S3.deleteObject({
+                Bucket : "diaryqeststore",
+                Key:`${userID}/${s3ImageName}`,
+            }).promise();
+        }
+        
+        catch(e){
+            console.log(e);
+        }
+    }
+
     /** 일기 사진 DB에서 조회 함수 */
-    const serchDiaryImageFile = async() =>{
+    const serchDiaryImageFile = async() => {
        
         try{
+           console.log("asdfadfadsfadf");
            
             let respons = await axios.get('http://localhost:5000/UserHome/diaryImageFileSearch',{
                 params: {
@@ -76,12 +94,13 @@ const UserDiary = () =>{
                   'date': diaryDate
                 }      
                   });
-                  
-                  loadImageFile(respons.data.data[0].date);
-                  console.log(respons.data.data[0].date);
+                  setS3ImageName(respons.data.data[0].image);
+                  loadImageFile(respons.data.data[0].image);
         }
         catch(e){
+            console.log(e);
             alert("이미지 파일이 없습니다."); // 이미지가 없는 경우엔 빈칸으로 띄워주는 코드 작성해야함.
+            return;
         }
     }
 
@@ -92,8 +111,6 @@ const UserDiary = () =>{
             setHiddenTextCount('textCout-wrap');
             setHiddenBtn('hiddenBtn');
             setUpdateBtnValue('완료');
-            
-           
         }
         else{
             setReadOnly(true);
@@ -101,16 +118,24 @@ const UserDiary = () =>{
             setHiddenBtn('diaryBtn delete');
             setUpdateBtnValue('수정');
             
+        if(window.confirm("수정한 내용을 저장하시겠습니까?")){
             axios.post('http://localhost:5000/UserHome/diaryUpdateText',{
                 id:userID,
                 text:text,
                 date:diaryDate
                  });
-                 
+
+            alert("저장완료");
+            moveBackPage();
+        }
+        else {
+            alert("취소");
+        }    
         }
         
     }
 
+    /**콜백함수 써주기. 수정사항. */
     const moveBackPage = () =>{
         navigate(-1);
     }
@@ -130,6 +155,9 @@ const UserDiary = () =>{
                     id:userID,
                     date:diaryDate
                 });
+
+                deleteImageFileS3();
+                
                 alert("삭제되었습니다.");
                 navigate(-1);
                 }

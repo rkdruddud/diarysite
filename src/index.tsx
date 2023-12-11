@@ -9,26 +9,24 @@ import ChangePW from './LoginPages/ChangePW';
 import UserHome from './UserPages/UserHome';
 import UserDiary from './UserPages/UserDiary';
 import CreateDiary from './UserPages/CreateDiary';
+import SimpleUserDiary from './UserPages/SimpleUserDiary';
 import { Provider } from 'react-redux';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import store from './Types/config';
+import {QueryClient, QueryClientProvider} from 'react-query'
 
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-
-const client = new ApolloClient({
-  uri: "http://localhost:5000/graphql",
-  cache: new InMemoryCache(),
-});
-
+const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-    <ApolloProvider client={client}>
     <Provider store={store}>
+    <QueryClientProvider client={queryClient}>
     <Routes>
       <Route path='/' element={<Home2/>}/>
       <Route path='/Login' element={<Login/>}/>
@@ -37,12 +35,13 @@ root.render(
       <Route path='/FindPW' element={<FindPW/>}/>
       <Route path='/ChangePW' element={<ChangePW/>}/>
       <Route path='/UserHome' element={<UserHome/>}/>
+      <Route path='/SimpleUserDiary' element={<SimpleUserDiary/>}/>
       <Route path='/UserDiary' element={<UserDiary/>}/>
       <Route path='/CreateDiary' element={<CreateDiary/>}/>
     </Routes>
-    
+    </QueryClientProvider>
     </Provider>
-    </ApolloProvider>
+   
     </BrowserRouter>
     
   </React.StrictMode>

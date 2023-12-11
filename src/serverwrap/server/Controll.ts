@@ -330,12 +330,34 @@ export const DeleteDiary = (req:Request,res:Response) =>{
 
 }
 
+/** 작성된 다이어리 사진 조회 */
 export const DiaryImageFileSearch = (req:Request,res:Response)=>{
 
     const userID = req.query.id;
     const date = req.query.date;
     
     database.query('SELECT image FROM `diary` WHERE `id` = ? AND `date` = ?;',[userID,date] , (error:any, data:any) =>{
+        
+        if(!error){
+            res.status(200).json({
+                data:data
+            })
+        }
+
+        if(error){
+            res.status(400).json({
+                error:error
+            });
+        }
+    })
+}
+
+/** 작성된 일기 날짜 가져오기 */
+export const GetWrittenDiaryDate = (req:Request,res:Response)=>{
+
+    const userID = req.query.id;
+    
+    database.query('SELECT date FROM `diary` WHERE `id` = ?;',userID , (error:any, data:any) =>{
         
         if(!error){
             res.status(200).json({
