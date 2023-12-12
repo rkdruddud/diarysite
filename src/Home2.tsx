@@ -68,7 +68,7 @@ const Home2:React.FC = () => {
 
         <div className="HomeText-wrap"> 
       
- 
+            <div className='slide-inner-wrap'>
             <div className={changeLeftSlide}>
             <div className={changeLeftTrackSlide}>
                 <div className='slide'><img  src={booksImage}></img></div>
@@ -89,7 +89,7 @@ const Home2:React.FC = () => {
             </div>
         
             </div>
-       
+            </div>
             <div className='door-wrap'>
        <div className={doorSizeValid}>
             <div className='leftdoor'>

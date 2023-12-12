@@ -1,3 +1,82 @@
+/* 이 부분은 높이 관련 css 수정하기*/
+
+@media  (max-width: 1960px) and (orientation: landscape) {
+
+    .left-side{
+       
+        transform: rotateY(85deg) translateZ(-320px) translateX(380px);
+    
+    }
+    
+    
+    .left-side-slider{
+       
+        transform: rotateY(85deg) translateZ(-320px) translateX(380px);
+    
+    }
+    
+    .right-side {
+        transform: rotateY(-83deg) translateZ(330px) translateX(-380px);
+    }
+
+    .right-side-slider{
+                     
+        transform: rotateY(-81deg) translateZ(330px) translateX(-440px);
+      }
+    
+      .left-side-slider-again{
+       
+        transform: rotateY(85deg) translateZ(-270px) translateX(300px);
+    
+    }
+    
+    .right-side-slider-again{
+                     
+        transform: rotateY(-85deg) translateZ(350px) translateX(-350px);
+      }
+    
+    
+    }
+    
+
+@media  (max-width: 1690px) and (orientation: landscape) {
+
+    .left-side{
+       
+        transform: rotateY(85deg) translateZ(-420px) translateX(410px);
+    
+    }
+    
+    
+    .left-side-slider{
+       
+        transform: rotateY(85deg) translateZ(-420px) translateX(410px);
+    
+    }
+    
+    .right-side {
+        transform: rotateY(-85deg) translateZ(350px) translateX(-400px);
+    }
+
+    .right-side-slider{
+                     
+        transform: rotateY(-85deg) translateZ(350px) translateX(-400px);
+      }
+    
+      .left-side-slider-again{
+       
+        transform: rotateY(85deg) translateZ(-420px) translateX(410px);
+    
+    }
+    
+    .right-side-slider-again{
+                     
+        transform: rotateY(-85deg) translateZ(350px) translateX(-400px);
+      }
+    
+    
+    }
+
 @media  (max-width: 1560px) and (orientation: landscape) {
 
 .left-side{

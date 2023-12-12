@@ -321,12 +321,20 @@ div{
 
 
 /**이미지 슬라이드*/
+.slide-inner-wrap{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    perspective: 800px;
+}
+
 .left-side{
     position: absolute;
     display: grid;
     width: 1691px;
     height: 390px;
-    top: 200px;
+    top: 27vh;
     left: 0;
     place-items: center;
     overflow: hidden;
@@ -341,7 +349,7 @@ div{
     display: grid;
     width: 1691px;
     height: 390px;
-    top: 200px;
+    top: 27vh;
     left: 0;
     place-items: center;
     overflow: hidden;
@@ -356,7 +364,7 @@ div{
     display: grid;
     width: 1691px;
     height: 390px;
-    top: 200px;
+    top: 27vh;
     left: calc(6.05vw*7);
     place-items: center;
     overflow: hidden;
@@ -371,7 +379,7 @@ div{
     display: grid;
     width: 1691px;
     height: 390px;
-    top: 200px;
+    top: 27vh;
     left: calc(6.05vw*7);
     place-items: center;
     overflow: hidden;
@@ -402,7 +410,7 @@ div{
     display: grid;
     width: 1691px;
     height: 390px;
-    top: 200px;
+    top: 27vh;
     left: 0;
     place-items: center;
     overflow: hidden;
@@ -417,7 +425,7 @@ div{
     display: grid;
     width: 1691px;
     height: 390px;
-    top: 200px;
+    top: 27vh;
     left: calc(6.05vw*7);
     place-items: center;
     overflow: hidden;
